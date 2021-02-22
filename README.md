@@ -8,8 +8,8 @@ Cloning Youtube with vanilla and NodeJS
 - [x] Login
 - [x] Search
 - [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload
+- [x] Edit Profile
+- [x] Change Password
+- [a] Upload
 - [ ] Video Detail
-- [ ] Edit Video
+- [a] Edit Video
