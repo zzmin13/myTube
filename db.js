@@ -4,7 +4,7 @@ export const videos = [
         title: 'Video awesome',
         description: 'This is something I love',
         views: 24,
-        videoFile: "https://youtu.be/0-q1KafFCLU",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 121212,
             name: "Minkyoung kang",
@@ -17,7 +17,7 @@ export const videos = [
         title: 'Video super',
         description: 'This is something I love',
         views: 24,
-        videoFile: "https://youtu.be/GeeM2V15QFY",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 121212,
             name: "Minkyoung kang",
@@ -30,7 +30,7 @@ export const videos = [
         title: 'Video nice',
         description: 'This is something I love',
         views: 24,
-        videoFile: "https://youtu.be/3iM_06QeZi8",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 121212,
             name: "Minkyoung kang",
@@ -43,7 +43,7 @@ export const videos = [
         title: 'Video perfect',
         description: 'This is something I love',
         views: 24,
-        videoFile: "https://youtu.be/D1PvIWdJ8xo",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 121212,
             name: "Minkyoung kang",
