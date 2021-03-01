@@ -1,54 +1,15 @@
-export const videos = [
-    {
-        id: 324393,
-        title: 'Video awesome',
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "Minkyoung kang",
-            email: "zzalsrud@naver.com",
+import mongoose from "mongoose";
 
-        }
-    },
-    {
-        id: 3121213,
-        title: 'Video super',
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "Minkyoung kang",
-            email: "zzalsrud@naver.com",
+mongoose.connect("mongodb://localhost:27017/mytube",
+{
+    useNewUrlParser: true,
+    useFindAndModify:false
+});
 
-        }
-    },
-    {
-        id: 9393921,
-        title: 'Video nice',
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "Minkyoung kang",
-            email: "zzalsrud@naver.com",
+const db = mongoose.connection;
 
-        }
-    },
-    {
-        id: 324393,
-        title: 'Video perfect',
-        description: 'This is something I love',
-        views: 24,
-        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator: {
-            id: 121212,
-            name: "Minkyoung kang",
-            email: "zzalsrud@naver.com",
+const handleOpen = () => console.log("✅ Connected to DB");
+const handleError = () => console.log("❌ Error on DB Connection: ${error}");
 
-        }
-    }
-]
+db.once("open", handleOpen);
+db.on("error",handleError);
