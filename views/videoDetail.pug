@@ -1,10 +1,18 @@
 extends layouts/main
 
 block content 
+<<<<<<< HEAD
     .video__player 
+=======
+    .video__player
+>>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
         video(src=`/${video.fileUrl}`, width="30%", controls=true, autoplay=true)
     .video__info
         a(href=routes.editVideo(video.id)) Edit Video
         h5.video__title=video.title
         span.video__views=video.views
+<<<<<<< HEAD
         p.video__description=video.description  
+=======
+        p.video__description=video.description 
+>>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
