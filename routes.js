@@ -47,16 +47,12 @@ const routes = {
     },
     editVideo: (id) => {
         if(id){
-<<<<<<< HEAD
             return `/videos/${id}/edit`;
-=======
-            return `/videos/${id}/edit`
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
+
         }else{
             return EDIT_VIDEO;
         }
     },
-<<<<<<< HEAD
     deleteVideo: (id) => {
         if(id){
             return `/videos/${id}/delete`;
@@ -64,9 +60,6 @@ const routes = {
             return  DELETE_VIDEO;
         }
     }
-=======
-    deleteVideo: DELETE_VIDEO
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
 };
 
 export default routes;

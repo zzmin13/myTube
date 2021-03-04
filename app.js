@@ -17,11 +17,7 @@ app.use(function(req, res, next) {
     return next();
     });
 app.set("view engine", "pug");
-<<<<<<< HEAD
 app.use("/uploads", express.static("uploads"));
-=======
-app.use("/uploads", express.static("uploads"))
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

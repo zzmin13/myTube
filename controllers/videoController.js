@@ -3,7 +3,7 @@ import Video from "../models/Video";
 
 export const home = async(req, res) => {
     try{
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({_id: -1});
         res.render("home", {pageTitle: "Home", videos});
     }catch(error){
         console.log(error);
@@ -13,9 +13,15 @@ export const home = async(req, res) => {
 };
     
 
-export const search = (req, res) => {
-    const {query: { term: searchingBy }} = req; // const searchingBy = req.query.term 과 같은 코드
-    res.render("search", {pageTitle: "Search", searchingBy, videos}); // searchingBy = searchingBy 인 경우 하나로 줄여쓸 수 있음
+export const search = async(req, res) => {
+    const {query: { term: searchingBy }} = req;
+    let videos = [];
+    try{
+        videos = await Video.find({title: {$regex: searchingBy, $options: "i"}});
+    }catch(error){
+        console.log(error);
+    }
+    res.render("search", {pageTitle: "Search", searchingBy, videos}); 
 
 };
 
@@ -43,35 +49,15 @@ export const postUpload = async(req, res) => {
 
 export const videoDetail = async(req, res) => {
     const { params: {id}} = req;
-<<<<<<< HEAD
     try{
         const video = await Video.findById(id);
         console.log(video);
         res.render("videoDetail", {pageTitle: video.title, video});
-=======
 
-    try{
-        const video = await Video.findById(id);
-        res.render("videoDetail", {pageTitle: "Video Detail", video});
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
     }catch(error){
         console.log(error);
         res.redirect(routes.home);
     }
-<<<<<<< HEAD
-    
-}
-
-export const getEditVideo = async(req, res) => {
-    const { 
-        body : { title, description },
-        params: { id } } = req;
-    try{
-        const video = await Video.findById(id);
-        res.render("editVideo", {pageTitle: `Edit ${video.title}`, video});
-    }catch(error){
-        res.redirect(routes.home);
-=======
 };
 
 export const getEditVideo = async(req, res) => {
@@ -82,22 +68,10 @@ export const getEditVideo = async(req, res) => {
 
     }catch(error){
         res.redirect(routes.home);
-
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
     }
     
 }
 export const postEditVideo = async(req, res) => {
-<<<<<<< HEAD
-    const { 
-        body : { title, description },
-        params: { id } } = req;
-    try{
-        await Video.findOneAndUpdate({_id: id},{title,description});
-        res.redirect(routes.videoDetail(id));
-    }catch(error){
-        console.log(error);
-=======
     const {
         params: {id},
         body : {title,description}} = req;
@@ -105,7 +79,6 @@ export const postEditVideo = async(req, res) => {
         await Video.findOneAndUpdate({ _id: id },{ title, description});
         res.redirect(routes.videoDetail(id));
     }catch(error){
->>>>>>> 39a6c55042833fcb80f9325fd9160f2092a23768
         res.redirect(routes.home);
     }
 }
