@@ -3,9 +3,12 @@ header.header
         .header__column
             a(href=routes.home)
                 i.fab.fa-youtube
+                span #{siteName}
         .header__column
             form(action=routes.search, method="get")
-                input(type="text", placeholder="Search by term...", name="term")
+                input(type="text", placeholder="검색", name="term")
+                button(type="submit", value="Search")
+                    i.fas.fa-search
         .header__column
             ul
                 if !user.isAuthenticated
