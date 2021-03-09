@@ -1,25 +1,25 @@
 header.header
     .header__wrapper
         .header__column
-            a(href=routes.home)
+            a(href=routes.home,title="홈")
                 i.fab.fa-youtube
                 span #{siteName}
         .header__column
             form(action=routes.search, method="get")
                 input(type="text", placeholder="검색", name="term")
-                button(type="submit", value="Search")
+                button(type="submit", value="Search", title="검색")
                     i.fas.fa-search
         .header__column
             ul
                 if !user.isAuthenticated
                     li
-                        a(href=routes.join) Join
+                        a(href=routes.join, title="회원가입") Join
                     li
-                        a(href=routes.login) Log In
+                        a(href=routes.login, title="로그인") Log In
                 else 
                     li
-                        a(href=`/videos${routes.upload}`) Upload
+                        a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
                     li
-                        a(href=routes.userDetail(user.id)) Profile
+                        a(href=routes.userDetail(user.id), title="프로필") Profile
                     li
-                        a(href=routes.logout) Log Out           
+                        a(href=routes.logout, title="로그아웃") Log Out           
