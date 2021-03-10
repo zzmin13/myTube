@@ -1,11 +1,13 @@
+import passport from "passport";
 import routes from '../routes';
 import User from "../models/User";
+
 
 export const getJoin = (req,res) =>{
     res.render("join", {pageTitle: "Join"});
 }
 
-export const postJoin = async (req,res) => {
+export const postJoin = async (req,res,next) => {
     // console.log(req.body);
     const{
         body:{name, email, password, password2}
@@ -14,24 +16,26 @@ export const postJoin = async (req,res) => {
         res.status(400);
         res.render("join", {pageTitle: "Join"});
     }else{
-        try{
-            const user = await User({
-                name,
-                email
-            });
-            await User.register(user,password);
-        }catch(error){
-            console.log(error);
-        }
+       try{
+           const user = await User({
+               name,
+               email
+           });
+           await User.register(user,password);
+           next();
+       }catch(error){
+           console.log(error);
+           res.redirect(routes.home);
+       }
         //To Do: Log User In
-        res.redirect(routes.home);
     }
 }
 
 export const getLogin = (req,res) => res.render("login", {pageTitle: "Login"});
-export const postLogin = (req,res) => {
-    res.redirect(routes.home);
-}
+export const postLogin = passport.authenticate('local', {
+    failureRedirect: routes.login,
+    successRedirect: routes.home
+});
 export const logout = (req,res) => {
     //To Do : Process Log Out(로그 아웃 처리)
     res.redirect(routes.home);
