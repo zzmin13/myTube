@@ -11,7 +11,7 @@ header.header
                     i.fas.fa-search
         .header__column
             ul
-                if !user.isAuthenticated
+                if !user
                     li
                         a(href=routes.join, title="회원가입") Join
                     li
