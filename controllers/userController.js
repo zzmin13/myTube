@@ -36,6 +36,11 @@ export const postLogin = passport.authenticate('local', {
     failureRedirect: routes.login,
     successRedirect: routes.home
 });
+
+export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
+    console.log(accessToken, refreshToken, profile, cb);
+};
+
 export const logout = (req,res) => {
     //To Do : Process Log Out(로그 아웃 처리)
     res.redirect(routes.home);
