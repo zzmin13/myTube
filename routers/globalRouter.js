@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { facebookLogin, getJoin, getLogin, getMe, githubLogin, logout, postFacebookLogin, postGithubLogIn, postJoin, postLogin } from '../controllers/userController';
+import { getJoin, getLogin, getMe, githubLogin, kakaoLogin, logout, postGithubLogIn, postJoin, postKakaoLogin, postLogin } from '../controllers/userController';
 import { home, search } from '../controllers/videoController';
 import { onlyPrivate, onlyPublic } from '../middlewares';
 import routes from "../routes";
@@ -25,10 +25,12 @@ globalRouter.get(
                 );
 globalRouter.get(routes.me, getMe);
 
-globalRouter.get(routes.facebook, facebookLogin);
+globalRouter.get(routes.kakao, kakaoLogin);
 globalRouter.get(
-        routes.facebookCallback,
-        passport.authenticate('facebook', { failureRedirect: '/login' }),
-        postFacebookLogin
-        );
+                routes.kakaoCallback,
+                passport.authenticate('kakao', {failureRedirect: '/login'}),
+                postKakaoLogin
+                );
+
+
 export default globalRouter;
