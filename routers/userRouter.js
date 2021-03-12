@@ -2,7 +2,7 @@ import express from "express";
 import { changePassword,
         editProfile,
         userDetail,
-        users } from '../controllers/userController';
+        } from '../controllers/userController';
 import { onlyPrivate } from '../middlewares';
 import routes from "../routes";
 

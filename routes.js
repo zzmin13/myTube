@@ -6,6 +6,7 @@ const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
+const ME = "/me";
 
 //Users
 const USERS = "/users";
@@ -66,7 +67,9 @@ const routes = {
         }
     },
     gitHub: GITHUB,
-    gitHubCallback: GITHUB_CALLBACK
+    gitHubCallback: GITHUB_CALLBACK,
+
+    me: ME
 };
 
 export default routes;

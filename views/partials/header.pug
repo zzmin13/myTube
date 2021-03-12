@@ -11,7 +11,7 @@ header.header
                     i.fas.fa-search
         .header__column
             ul
-                if !user
+                if !loggedUser
                     li
                         a(href=routes.join, title="회원가입") Join
                     li
@@ -20,6 +20,6 @@ header.header
                     li
                         a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
                     li
-                        a(href=routes.userDetail(user.id), title="프로필") Profile
+                        a(href=routes.me, title="프로필") Profile
                     li
                         a(href=routes.logout, title="로그아웃") Log Out           

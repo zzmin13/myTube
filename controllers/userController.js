@@ -40,7 +40,7 @@ export const postLogin = passport.authenticate('local', {
 export const githubLogin = passport.authenticate('github');
 
 export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
-    const {_json : { id, avatar_url, name, email}} = profile;
+    const {_json : { id, avatar_url : avatarUrl, name, email}} = profile;
     try{
         const user = await User.findOne({email});
         if(user){
@@ -52,7 +52,7 @@ export const githubLoginCallback = async (accessToken, refreshToken, profile, cb
                 email,
                 name,
                 githubId:id,
-                avatarUrl : avatar_url
+                avatarUrl
             });
             return cb(null, newUser);
     }catch(error){
@@ -69,6 +69,9 @@ export const logout = (req,res) => {
     res.redirect(routes.home);
 }
 
+export const getMe = (req, res) => {
+    res.render("userDetail", {pageTitle: "User Detail", user: req.user});
+}
 
 export const userDetail = (req,res) => res.render("userDetail", {pageTitle: "User Detail"});
 export const editProfile = (req,res) => res.render("editProfile", {pageTitle: "Edit Profile"});
