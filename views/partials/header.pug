@@ -25,6 +25,6 @@ header.header
                         .user-profile 
                             a(href=routes.me, title="프로필")
                                 if !loggedUser.avatarUrl
-                                    img.u-avatar-default(src="./unnamed.jpg")
+                                    img.u-avatar-default(src="#")
                                 else
                                     img.u-avatar(src=loggedUser.avatarUrl)
