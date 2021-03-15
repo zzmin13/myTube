@@ -20,6 +20,11 @@ header.header
                     li
                         a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
                     li
-                        a(href=routes.me, title="프로필") Profile
+                        a(href=routes.logout, title="로그아웃") Log Out
                     li
-                        a(href=routes.logout, title="로그아웃") Log Out           
+                        .user-profile 
+                            a(href=routes.me, title="프로필")
+                                if !loggedUser.avatarUrl
+                                    img.u-avatar-default(src="./unnamed.jpg")
+                                else
+                                    img.u-avatar(src=loggedUser.avatarUrl)

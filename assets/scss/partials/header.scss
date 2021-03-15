@@ -64,9 +64,18 @@
       }
       ul {
         display: flex;
+        align-items: center;
         color: black;
         font-weight: 600;
         text-transform: uppercase;
+
+        .u-avatar-default{
+          height: 30px;
+          width: 30px;
+        }
+        img{
+          height: 30px;
+        }
         li:not(:last-child) {
           margin-right: 15px;
         }
