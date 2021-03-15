@@ -123,7 +123,12 @@ export const userDetail = async (req,res) => {
     }
 }
 
-export const getEditProfile = (req,res) => res.render("editProfile", {pageTitle: "Edit Profile"});
+export const getEditProfile = (req,res) => {
+    res.render("editProfile", {pageTitle: "Edit Profile"});
+    console.log(`🎈`);
+    console.log(req.user);
+
+}
 export const postEditProfile = async(req, res) => {
     const {
         body: {name, email},
@@ -138,7 +143,25 @@ export const postEditProfile = async(req, res) => {
         res.redirect(routes.me);
     }catch(error){
         console.log(error);
-        res.render("editProfile", {pageTitle: "Edit Profile"});
+        res.redirect(routes.editProfile);
     }
 };
-export const changePassword = (req,res) => res.render("changePassword", {pageTitle: "Change Password"});
+export const getChangePassword = (req,res) => res.render("changePassword", {pageTitle: "Change Password"});
+export const postChangePassword = async (req,res) => {
+    const{
+        body: { oldPassword,newPassword, newPassword2}
+    } = req;
+    try{
+        if(newPassword !== newPassword2){
+            res.status(400);
+            res.redirect(`/users${routes.changePassword}`);
+            return
+        }
+        await req.user.changePassword(oldPassword, newPassword);
+        res.redirect(routes.me);
+    }catch(error){
+        console.log(error);
+        res.status(400);
+        res.redirect(`/users${routes.changePassword}`);
+    }
+};

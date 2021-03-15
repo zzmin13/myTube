@@ -5,6 +5,8 @@ import routes from "../routes";
 
 const videoRouter = express.Router();
 
+videoRouter.use("/uploads", express.static("uploads"));
+
 //upload
 videoRouter.get(routes.upload, onlyPrivate, getUpload);
 videoRouter.post(routes.upload, onlyPrivate, uploadVideo, postUpload);
