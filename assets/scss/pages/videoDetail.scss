@@ -2,14 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .video__player {
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    video {
-      width: 90%;
-    }
-  }
   .video__info {
     width: 100%;
     max-width: 850px;
