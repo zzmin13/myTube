@@ -17,6 +17,7 @@ var volumeBtn = document.getElementById("jsVolumeButton");
 var fullScreenBtn = document.getElementById("jsFullScreen");
 var currentTime = document.getElementById("currentTime");
 var totalTime = document.getElementById("totalTime");
+var volumeRange = document.getElementById("jsVolume");
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -33,9 +34,18 @@ function handleVolumeClick() {
     //비디오가 음소거 되어 있으면
     videoPlayer.muted = false; //음소거를 해제한다.
 
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'; // 소리나는 아이콘
+    volumeRange.value = videoPlayer.volume;
+
+    if (volumeRange.value >= 0.6) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else if (volumeRange.value >= 0.3) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+    } else if (volumeRange.value >= 0.0) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
+    }
   } else {
     // 비디오가 음소거되어있지 않으면
+    volumeRange.value = 0;
     videoPlayer.muted = true; // 음소거 상태로 만든다.
 
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'; // 음소거 아이콘
@@ -113,12 +123,32 @@ function handleEnded() {
   playBtn.innerHTML = '<i class="fas fa-redo"></i>';
 }
 
+function handleDrag(event) {
+  var value = event.target.value;
+  videoPlayer.volume = value;
+
+  if (videoPlayer.muted) {
+    //비디오가 음소거 되어 있으면
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+  } else {
+    if (value >= 0.6) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    } else if (value >= 0.3) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+    } else if (value > 0.0) {
+      volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
+    }
+  }
+}
+
 function init() {
+  videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
+  volumeRange.addEventListener("input", handleDrag);
 }
 
 if (videoContainer) {
