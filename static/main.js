@@ -109,7 +109,7 @@ var formatDate = function formatDate(seconds) {
 };
 
 function getCurrentTime() {
-  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
+  currentTime.innerHTML = formatDate(Math.round(videoPlayer.currentTime));
 }
 
 function setTotalTime() {
@@ -145,10 +145,10 @@ function init() {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
+  volumeRange.addEventListener("input", handleDrag);
   fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
-  volumeRange.addEventListener("input", handleDrag);
 }
 
 if (videoContainer) {
