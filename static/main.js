@@ -171,15 +171,30 @@ var recordContainer = document.getElementById("jsRecordContainer");
 var recordBtn = document.getElementById("jsRecordBtn");
 var videoPreview = document.getElementById("jsVideoPreview");
 var streamObject;
+var videoRecorder;
 
 var handleVideoData = function handleVideoData(event) {
-  console.log(event);
+  var videoFile = event.data;
+  var link = document.createElement("a");
+  link.href = URL.createObjectURL(videoFile);
+  link.download = "recorded.webm";
+  document.body.appendChild(link);
+  link.click();
 };
 
 var startRecording = function startRecording() {
-  var videoRecorder = new MediaRecorder(streamObject);
+  videoRecorder = new MediaRecorder(streamObject);
   videoRecorder.start();
   videoRecorder.addEventListener("dataavailable", handleVideoData);
+  recordBtn.addEventListener("click", stopRecording);
+};
+
+var stopRecording = function stopRecording() {
+  videoRecorder.stop();
+  recordBtn.removeEventListener("click", stopRecording);
+  recordBtn.addEventListener("click", getVideo);
+  recordBtn.innerHTML = "Start Recording";
+  recordBtn.style.backgroundColor = "#3498db";
 };
 
 var getVideo = /*#__PURE__*/function () {
@@ -205,27 +220,28 @@ var getVideo = /*#__PURE__*/function () {
             videoPreview.muted = true;
             videoPreview.play();
             recordBtn.innerHTML = "Stop recording";
+            recordBtn.style.backgroundColor = "red";
             streamObject = stream;
             startRecording();
-            _context.next = 15;
+            _context.next = 16;
             break;
 
-          case 12:
-            _context.prev = 12;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](0);
             recordBtn.innerHTML = "😥 녹화할 수 없습니다.";
 
-          case 15:
-            _context.prev = 15;
+          case 16:
+            _context.prev = 16;
             recordBtn.removeEventListener("click", getVideo);
-            return _context.finish(15);
+            return _context.finish(16);
 
-          case 18:
+          case 19:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 12, 15, 18]]);
+    }, _callee, null, [[0, 13, 16, 19]]);
   }));
 
   return function getVideo() {
