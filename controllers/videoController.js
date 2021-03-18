@@ -3,7 +3,7 @@ import Video from "../models/Video";
 
 export const home = async(req, res) => {
     try{
-        const videos = await Video.find({}).sort({_id: -1});
+        const videos = await Video.find({}).sort({_id: -1}).populate("creator");
         res.render("home", {pageTitle: "Home", videos});
     }catch(error){
         console.log(error);
@@ -61,12 +61,13 @@ export const getEditVideo = async(req, res) => {
     const {params: {id}} = req;
     try{
         const video = await Video.findById(id);
-        if(video.creator !== req.user.id){
+        if(video.creator != req.user.id){
             throw Error();
         }else{
             res.render("editVideo", {pageTitle: `Edit ${video.title}`, video});
         }
     }catch(error){
+        console.log(error);
         res.redirect(routes.home);
     }
 }

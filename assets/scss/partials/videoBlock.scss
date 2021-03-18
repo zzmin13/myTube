@@ -7,5 +7,37 @@
     font-size: 16px;
     font-weight: 300;
     margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .videoBlock__creatorAvatar {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+  a {
+    display: flex;
+    flex-direction: column;
+  }
+  .videoBlock__info {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    overflow: hidden;
+
+    .videoBlock__text {
+      margin-left: 10px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .videoBlock__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .videoBlock__creatorName {
+    margin-bottom: 2px;
   }
 }

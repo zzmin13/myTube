@@ -1,5 +1,3 @@
-const { isValidObjectId } = require('mongoose');
-
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
@@ -92,6 +90,7 @@ function getCurrentTime(){
 
 function setTotalTime(){
     const totalTimeString = formatDate(videoPlayer.duration);
+    console.log(videoPlayer.duration);
     totalTime.innerHTML = totalTimeString;
     setInterval(getCurrentTime, 1000);
 }
