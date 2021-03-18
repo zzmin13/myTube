@@ -15,6 +15,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+
     .header__column {
       i {
         color: $red;
@@ -61,23 +62,49 @@
       }
       &:last-child {
         justify-self: end;
-      }
-      ul {
-        display: flex;
-        align-items: center;
-        color: black;
-        font-weight: 600;
-        text-transform: uppercase;
 
-        .u-avatar-default{
-          height: 30px;
-          width: 30px;
+        ul {
+          display: flex;
+          align-items: center;
+          color: black;
+          font-weight: 600;
+          text-transform: uppercase;
+
+          li:not(:last-child) {
+            margin-right: 15px;
+          }
         }
-        img{
-          height: 30px;
+
+        .user-profile-detail {
+          display: none;
+          flex-direction: column;
+          background-color: white;
+          border: 0.5px solid #e0e0e0;
+          border-top: none;
+          position: absolute;
+          top: 0px;
+          right: 80px;
+          width: 100px;
+          height: 120px;
+          justify-content: center;
+          cursor: pointer;
+          a {
+            padding: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 500;
+            &:hover {
+              color: #90caf9;
+            }
+          }
         }
-        li:not(:last-child) {
-          margin-right: 15px;
+        .user-profile {
+          cursor: pointer;
+
+          .u-avatar-default {
+            height: 30px;
+            width: 30px;
+          }
         }
       }
     }

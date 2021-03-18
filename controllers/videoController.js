@@ -17,7 +17,7 @@ export const search = async(req, res) => {
     const {query: { term: searchingBy }} = req;
     let videos = [];
     try{
-        videos = await Video.find({title: {$regex: searchingBy, $options: "i"}});
+        videos = await Video.find({title: {$regex: searchingBy, $options: "i"}}).populate("creator");
     }catch(error){
         console.log(error);
     }

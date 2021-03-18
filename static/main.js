@@ -1,6 +1,37 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/header.js":
+/*!*****************************!*\
+  !*** ./assets/js/header.js ***!
+  \*****************************/
+/***/ (() => {
+
+var headerProfile = document.getElementById("jsHeaderProfile");
+var profileDetail = document.getElementById("jsHeaderProfileDetail");
+
+var profileHidden = function profileHidden() {
+  profileDetail.style.display = 'none';
+  headerProfile.removeEventListener("click", profileHidden);
+  headerProfile.addEventListener("click", handleProfileClick);
+};
+
+var handleProfileClick = function handleProfileClick() {
+  profileDetail.style.display = "flex";
+  headerProfile.removeEventListener("click", handleProfileClick);
+  headerProfile.addEventListener("click", profileHidden);
+};
+
+function init() {
+  headerProfile.addEventListener("click", handleProfileClick);
+}
+
+if (headerProfile) {
+  init();
+}
+
+/***/ }),
+
 /***/ "./assets/js/videoPlayer.js":
 /*!**********************************!*\
   !*** ./assets/js/videoPlayer.js ***!
@@ -11414,10 +11445,13 @@ _global["default"]._babelPolyfill = true;
   \***************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ "./assets/scss/styles.scss");
-/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ "./assets/js/videoPlayer.js");
-/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_videoPlayer__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecorder */ "./assets/js/videoRecorder.js");
-/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./assets/js/header.js");
+/* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_header__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoPlayer */ "./assets/js/videoPlayer.js");
+/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoPlayer__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./videoRecorder */ "./assets/js/videoRecorder.js");
+/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 

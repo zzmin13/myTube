@@ -10,21 +10,20 @@ header.header
                 button(type="submit", value="Search", title="검색")
                     i.fas.fa-search
         .header__column
-            ul
-                if !loggedUser
+            if !loggedUser
+                ul
                     li
                         a(href=routes.join, title="회원가입") Join
                     li
                         a(href=routes.login, title="로그인") Log In
-                else 
-                    li
-                        a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
-                    li
-                        a(href=routes.logout, title="로그아웃") Log Out
-                    li
-                        .user-profile 
-                            a(href=routes.me, title="프로필")
-                                if loggedUser.avatarUrl === null
-                                    img.u-avatar-default(src="#")
-                                else
-                                    img.u-avatar(src=loggedUser.avatarUrl)
+            else 
+                .user-profile-detail#jsHeaderProfileDetail
+                    a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
+                    a(href=routes.me, title="프로필") My page
+                    a(href=routes.logout, title="로그아웃") Log Out
+                    
+                .user-profile#jsHeaderProfile
+                    if loggedUser.avatarUrl === null
+                        img.u-avatar-default(src="#")
+                    else
+                        img.u-avatar-default(src=loggedUser.avatarUrl)

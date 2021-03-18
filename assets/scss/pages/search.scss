@@ -1,0 +1,8 @@
+.search__header {
+  margin-bottom: 20px;
+}
+.search__videos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  grid-gap: 30px;
+}
