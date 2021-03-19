@@ -98,4 +98,21 @@ export const deleteVideo = async(req, res) => {
         console.log(error);
     }
     res.redirect(routes.home); //비디오 삭제가 성공하던 실패하던 home으로 간다.
+};
+
+export const postRegisterView = async(req, res) => {
+    const { params : {id} } = req;
+    try{
+        const video = await Video.findById(id);
+        video.views += 1;
+        video.save();
+        res.status(200) // Okay
+        
+    }catch(error){
+        res.status(400); // 잘못된 요청
+        
+    }finally{
+        res.end();
+
+    }
 }
