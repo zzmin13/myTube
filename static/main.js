@@ -17,6 +17,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var addCommentForm = document.getElementById("jsAddComment");
+var commentList = document.getElementById("jsCommentList");
+var commentNumber = document.getElementById("jsCommentNumber");
+
+var increaseNumber = function increaseNumber() {
+  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
+};
+
+var addComment = function addComment(comment) {
+  var li = document.createElement("li");
+  var span = document.createElement("span");
+  span.innerHTML = comment;
+  li.appendChild(span);
+  commentList.prepend(li);
+  increaseNumber();
+};
 
 var sendComment = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(comment) {
@@ -37,7 +52,10 @@ var sendComment = /*#__PURE__*/function () {
 
           case 3:
             response = _context.sent;
-            console.log(response);
+
+            if (response.status === 200) {
+              addComment(comment);
+            }
 
           case 5:
           case "end":
@@ -246,9 +264,10 @@ function handleDrag(event) {
   }
 }
 
-function handleLoad() {
+function increaseViewNumber() {
   registerView();
-  console.log("window is loaded");
+  console.log("\uC870\uD68C\uC218\uAC00 1 \uC99D\uAC00\uD588\uC2B5\uB2C8\uB2E4.");
+  videoPlayer.removeEventListener("play", increaseViewNumber);
 }
 
 function init() {
@@ -259,7 +278,7 @@ function init() {
   fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
-  window.addEventListener("load", handleLoad);
+  videoPlayer.addEventListener("play", increaseViewNumber);
 }
 
 if (videoContainer) {

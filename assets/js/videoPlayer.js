@@ -123,9 +123,10 @@ function handleDrag(event){
         }
     }
 }
-function handleLoad(){
+function increaseViewNumber(){
     registerView();
-    console.log("window is loaded");
+    console.log(`조회수가 1 증가했습니다.`);
+    videoPlayer.removeEventListener("play", increaseViewNumber);
 
 }
 function init(){
@@ -136,7 +137,7 @@ function init(){
     fullScreenBtn.addEventListener("click", goFullScreen);
     videoPlayer.addEventListener("loadedmetadata", setTotalTime);
     videoPlayer.addEventListener("ended", handleEnded);
-    window.addEventListener("load", handleLoad);
+    videoPlayer.addEventListener("play", increaseViewNumber);
 }
 
 if(videoContainer){
