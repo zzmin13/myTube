@@ -28,10 +28,14 @@ block content
             else
                 span.video__comment-number
                     span#jsCommentNumber=video.comments.length
-                    |  comments 
+                    |  comments
             form.add__comment#jsAddComment
                     input(type="text", placeholder="Add a comment", name="comment")
             ul.video__comments-list#jsCommentList
-                each comment in video.comments.reverse()
-                    li
+                each comment in video.comments.reverse()    
+                    li(id=comment.id)
                         span=comment.text
+                        if loggedUser
+                            if comment.creator._id == loggedUser.id
+                                button.video__comments-delete.jsCommentDelBtn(type="button")='❌'
+                        

@@ -54,16 +54,23 @@
   .video__comments-list {
     margin-top: 50px;
     li {
-      background-color: #3498db;
+      display: flex;
       width: 320px;
-      margin: 0 auto;
-      color: white;
-      padding: 15px;
-      border-radius: 20px;
-      border-bottom-left-radius: 0px;
-      &:not(last-child) {
-        margin-bottom: 15px;
-      }
+      align-items: center;
+      background-color: lavender;
+      border-radius: 75px 75px 75px 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+    span {
+      width: 320px;
+      padding: 5px;
+    }
+    .video__comments-delete {
+      width: auto;
+      background-color: transparent;
+      text-align: end;
     }
   }
 }

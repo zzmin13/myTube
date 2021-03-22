@@ -19,6 +19,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var addCommentForm = document.getElementById("jsAddComment");
 var commentList = document.getElementById("jsCommentList");
 var commentNumber = document.getElementById("jsCommentNumber");
+var commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
+var newId = commentDelBtn.length + 1;
 
 var increaseNumber = function increaseNumber() {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
@@ -27,10 +29,17 @@ var increaseNumber = function increaseNumber() {
 var addComment = function addComment(comment) {
   var li = document.createElement("li");
   var span = document.createElement("span");
+  var delBtn = document.createElement("button");
+  delBtn.setAttribute("class", "video__comments-delete jsCommentDelBtn");
+  delBtn.innerHTML = '❌';
+  delBtn.id = newId; // id는 1부터 시작하고 싶음
+
   span.innerHTML = comment;
   li.appendChild(span);
+  li.appendChild(delBtn);
   commentList.prepend(li);
   increaseNumber();
+  delBtn.addEventListener("click", handleDelBtn);
 };
 
 var sendComment = /*#__PURE__*/function () {
@@ -78,13 +87,67 @@ var handleSubmit = function handleSubmit(event) {
   commentInput.value = "";
 };
 
+var handleDelBtn = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(event) {
+    var answer, deleteTarget, commentId, response;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            answer = confirm("덧글을 삭제하시겠습니까?");
+
+            if (!(answer === true)) {
+              _context2.next = 12;
+              break;
+            }
+
+            deleteTarget = event.target.parentNode;
+            console.log(deleteTarget.id);
+            commentId = deleteTarget.id;
+            _context2.next = 7;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+              url: "/api/comment/".concat(commentId, "/delete"),
+              method: "POST"
+            });
+
+          case 7:
+            response = _context2.sent;
+
+            if (response.status === 200) {
+              commentList.removeChild(event.target.parentNode);
+            }
+
+            commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
+            _context2.next = 13;
+            break;
+
+          case 12:
+            alert("삭제가 취소되었습니다.");
+
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function handleDelBtn(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
 function init() {
   addCommentForm.addEventListener("submit", handleSubmit);
 }
 
 if (addCommentForm) {
   init();
-}
+} // if(commentDelBtn){
+//     for (let i = 0; i < commentDelBtn.length; i++){
+//         commentDelBtn[i].addEventListener("click", handleDelBtn);
+//     }
+// }
 
 /***/ }),
 
