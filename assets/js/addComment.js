@@ -4,7 +4,6 @@ const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
 const commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
-const newId = commentDelBtn.length + 1;
 
 const increaseNumber = () => {
     commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
@@ -17,7 +16,6 @@ const addComment = (comment) => {
     
     delBtn.setAttribute("class", "video__comments-delete jsCommentDelBtn");
     delBtn.innerHTML = '❌';
-    delBtn.id = newId; // id는 1부터 시작하고 싶음
     span.innerHTML = comment;
 
     li.appendChild(span);
@@ -25,8 +23,6 @@ const addComment = (comment) => {
     commentList.prepend(li);
 
     increaseNumber();
-
-    delBtn.addEventListener("click", handleDelBtn);
 }
 
 const sendComment = async (comment) => {
@@ -39,6 +35,7 @@ const sendComment = async (comment) => {
         }
     });
     if(response.status === 200){
+        console.log(response);
         addComment(comment);
     }
 }
@@ -83,8 +80,8 @@ if(addCommentForm){
     init();
 }
 
-// if(commentDelBtn){
-//     for (let i = 0; i < commentDelBtn.length; i++){
-//         commentDelBtn[i].addEventListener("click", handleDelBtn);
-//     }
-// }
+if(commentDelBtn){
+    for (let i = 0; i < commentDelBtn.length; i++){
+        commentDelBtn[i].addEventListener("click", handleDelBtn);
+    }
+}
