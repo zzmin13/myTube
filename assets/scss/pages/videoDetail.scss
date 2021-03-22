@@ -27,11 +27,11 @@
       font-size: 16px;
     }
   }
-  .video__author{
+  .video__author {
     width: 100%;
     max-width: 850px;
     margin-top: 25px;
-    a{
+    a {
       color: #3498db;
     }
   }
@@ -39,8 +39,16 @@
     width: 100%;
     max-width: 850px;
     margin-top: 25px;
+    text-align: center;
     .video__comment-number {
       font-size: 18px;
+    }
+    .add__comment {
+      margin-top: 25px;
+      width: 100%;
+      input {
+        width: 100%;
+      }
     }
   }
 }

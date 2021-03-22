@@ -149,13 +149,12 @@ function getCurrentTime() {
 
 function setTotalTime() {
   var totalTimeString = formatDate(videoPlayer.duration);
-  console.log(videoPlayer.duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);
 }
 
 function handleEnded() {
-  registerView();
+  // registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-redo"></i>';
 }
@@ -178,6 +177,11 @@ function handleDrag(event) {
   }
 }
 
+function handleLoad() {
+  registerView();
+  console.log("window is loaded");
+}
+
 function init() {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
@@ -186,6 +190,7 @@ function init() {
   fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
+  window.addEventListener("load", handleLoad);
 }
 
 if (videoContainer) {
