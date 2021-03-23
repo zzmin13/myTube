@@ -6,6 +6,7 @@ import Comment from "../models/Comment";
 
 export const home = async(req, res) => {
     try{
+        console.log(req.user.avatarUrl);
         const videos = await Video.find({}).sort({_id: -1}).populate("creator");
         res.render("home", {pageTitle: "Home", videos});
     }catch(error){
