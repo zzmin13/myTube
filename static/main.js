@@ -181,6 +181,52 @@ if (headerProfile) {
 
 /***/ }),
 
+/***/ "./assets/js/videoDetail.js":
+/*!**********************************!*\
+  !*** ./assets/js/videoDetail.js ***!
+  \**********************************/
+/***/ (() => {
+
+var videoCreateDate = document.querySelector(".video__createDate");
+var moreDetailBtn = document.querySelector(".description_moreDetails");
+var videoDescription = document.querySelector(".video__description__text");
+
+var getDateString = function getDateString() {
+  var year = videoCreateDate.id.split("-")[0];
+  var month = videoCreateDate.id.split("-")[1];
+  var day = videoCreateDate.id.split("-")[2].slice(0, 2);
+  var dateString = "".concat(year, "\uB144 ").concat(month, "\uC6D4 ").concat(day, "\uC77C");
+  console.log(dateString);
+  videoCreateDate.innerHTML = dateString;
+};
+
+var handleMoreDetail = function handleMoreDetail(event) {
+  console.log(videoDescription);
+  videoDescription.classList.add('clicked'); //clicked 이면 간략히 라는 글씨가 나오게
+
+  event.target.innerHTML = '간략히';
+  moreDetailBtn.removeEventListener("click", handleMoreDetail);
+  moreDetailBtn.addEventListener("click", handlebriefly);
+};
+
+var handlebriefly = function handlebriefly(event) {
+  console.log(videoDescription);
+  videoDescription.classList.remove('clicked');
+  event.target.innerHTML = '더보기';
+  moreDetailBtn.removeEventListener("click", handlebriefly);
+  moreDetailBtn.addEventListener("click", handleMoreDetail);
+};
+
+if (videoCreateDate) {
+  getDateString();
+}
+
+if (moreDetailBtn) {
+  moreDetailBtn.addEventListener("click", handleMoreDetail);
+}
+
+/***/ }),
+
 /***/ "./assets/js/videoPlayer.js":
 /*!**********************************!*\
   !*** ./assets/js/videoPlayer.js ***!
@@ -13528,6 +13574,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./videoRecorder */ "./assets/js/videoRecorder.js");
 /* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addComment */ "./assets/js/addComment.js");
+/* harmony import */ var _videoDetail__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./videoDetail */ "./assets/js/videoDetail.js");
+/* harmony import */ var _videoDetail__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_videoDetail__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
