@@ -6,7 +6,7 @@ const commentNumber = document.getElementById("jsCommentNumber");
 const commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
 
 const increaseNumber = () => {
-    commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
+    commentNumber.innerHTML = `${parseInt(commentNumber.innerHTML, 10) + 1}개의 덧글`;
 
 }
 const addComment = (comment) => {
@@ -62,7 +62,7 @@ const handleDelBtn = async (event) => {
         if(response.status === 200){
             commentList.removeChild(event.target.parentNode);
         }
-        commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
+        commentNumber.innerHTML = `${parseInt(commentNumber.innerHTML, 10) - 1}개의 덧글`;
 
     }else{
         alert("삭제가 취소되었습니다.");

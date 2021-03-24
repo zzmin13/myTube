@@ -22,7 +22,7 @@ var commentNumber = document.getElementById("jsCommentNumber");
 var commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
 
 var increaseNumber = function increaseNumber() {
-  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
+  commentNumber.innerHTML = "".concat(parseInt(commentNumber.innerHTML, 10) + 1, "\uAC1C\uC758 \uB367\uAE00");
 };
 
 var addComment = function addComment(comment) {
@@ -114,7 +114,7 @@ var handleDelBtn = /*#__PURE__*/function () {
               commentList.removeChild(event.target.parentNode);
             }
 
-            commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
+            commentNumber.innerHTML = "".concat(parseInt(commentNumber.innerHTML, 10) - 1, "\uAC1C\uC758 \uB367\uAE00");
             _context2.next = 13;
             break;
 

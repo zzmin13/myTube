@@ -105,8 +105,8 @@ export const postEditVideo = async(req, res) => {
 export const deleteVideo = async(req, res) => {
     const { params: {id}} = req;
     try{
-        const video = await Video.findById({id});
-        if(video.creator !== req.user.id){
+        const video = await Video.findById({_id:id});
+        if(video.creator != req.user.id){
             throw Error();
         }else{
             await Video.findOneAndRemove({_id:id});
