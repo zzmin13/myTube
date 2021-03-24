@@ -150,6 +150,36 @@ if (commentDelBtn) {
 
 /***/ }),
 
+/***/ "./assets/js/deleteVideo.js":
+/*!**********************************!*\
+  !*** ./assets/js/deleteVideo.js ***!
+  \**********************************/
+/***/ (() => {
+
+var deleteVideoBtn = document.querySelector(".form-container__link--delete");
+
+var handleClickDeleteVideoBtn = function handleClickDeleteVideoBtn() {
+  var answer = confirm("비디오를 삭제하시겠습니까?");
+
+  if (answer === true) {
+    location.href = deleteVideoBtn.getAttribute("id");
+    return true;
+  } else {
+    return false;
+  }
+};
+
+function init() {
+  deleteVideoBtn.addEventListener("click", handleClickDeleteVideoBtn);
+}
+
+if (deleteVideoBtn) {
+  console.log(deleteVideoBtn.getAttribute("href"));
+  init();
+}
+
+/***/ }),
+
 /***/ "./assets/js/header.js":
 /*!*****************************!*\
   !*** ./assets/js/header.js ***!
@@ -13576,6 +13606,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addComment */ "./assets/js/addComment.js");
 /* harmony import */ var _videoDetail__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./videoDetail */ "./assets/js/videoDetail.js");
 /* harmony import */ var _videoDetail__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_videoDetail__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _deleteVideo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deleteVideo */ "./assets/js/deleteVideo.js");
+/* harmony import */ var _deleteVideo__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_deleteVideo__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 

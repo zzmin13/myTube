@@ -4,3 +4,4 @@ import "./videoPlayer";
 import "./videoRecorder";
 import "./addComment";
 import "./videoDetail";
+import "./deleteVideo";
