@@ -279,6 +279,14 @@ if (moreDetailBtn) {
   moreDetailBtn.addEventListener("click", handleMoreDetail);
 }
 
+if (videoDescription) {
+  var str = videoDescription.innerHTML;
+  console.log(str); // str = str.replace('안녕', '하이');
+
+  str.replace('\r\n', '<br>');
+  videoDescription.innerHTML = str;
+}
+
 /***/ }),
 
 /***/ "./assets/js/videoPlayer.js":
