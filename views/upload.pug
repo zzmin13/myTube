@@ -5,10 +5,13 @@ block content
         .record-container#jsRecordContainer
             video#jsVideoPreview
             button#jsRecordBtn Start Recording 
-        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+        form#jsUploadForm(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
             div.fileUpload
                 label(for="file") Video File
                 input(type="file", id="file", name="videoFile", required=true, accept="video/*")
             input(type="text",name="title", placeholder="Name" ,required=true)
             textarea(name="description", placeholder="Description" ,required=true)
             input(type="submit", value="Upload Video")
+        .loadingImage
+            img(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/091ed0ceebc72cbf7465e650f9dc14b2")
+            div 업로드 중입니다. 잠시만 기다려주세요.

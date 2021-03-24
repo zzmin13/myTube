@@ -5,3 +5,4 @@ import "./videoRecorder";
 import "./addComment";
 import "./videoDetail";
 import "./deleteVideo";
+import "./uploadVideo";

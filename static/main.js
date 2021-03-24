@@ -211,6 +211,30 @@ if (headerProfile) {
 
 /***/ }),
 
+/***/ "./assets/js/uploadVideo.js":
+/*!**********************************!*\
+  !*** ./assets/js/uploadVideo.js ***!
+  \**********************************/
+/***/ (() => {
+
+var uploadForm = document.getElementById("jsUploadForm");
+var loadingImage = document.querySelector(".loadingImage");
+
+var handleSubmitForm = function handleSubmitForm() {
+  loadingImage.style.display = 'flex';
+};
+
+function init() {
+  uploadForm.addEventListener("submit", handleSubmitForm);
+}
+
+if (uploadForm) {
+  console.log('hi');
+  init();
+}
+
+/***/ }),
+
 /***/ "./assets/js/videoDetail.js":
 /*!**********************************!*\
   !*** ./assets/js/videoDetail.js ***!
@@ -13608,6 +13632,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _videoDetail__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_videoDetail__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _deleteVideo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deleteVideo */ "./assets/js/deleteVideo.js");
 /* harmony import */ var _deleteVideo__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_deleteVideo__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _uploadVideo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./uploadVideo */ "./assets/js/uploadVideo.js");
+/* harmony import */ var _uploadVideo__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_uploadVideo__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
