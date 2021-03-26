@@ -4,8 +4,9 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
-import mongoose from "mongoose";
 import session from "express-session";
+import mongoose from "mongoose";
+import MongoStore from "connect-mongo";
 import path from "path";
 import dotenv from "dotenv";
 import userRouter from "./routers/userRouter";
@@ -18,10 +19,9 @@ import "./passport";
 
 dotenv.config();
 
-
 const app = express();
 
-const MongoStore = require("connect-mongo").default;
+const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.use(function(req, res, next) {
@@ -39,7 +39,7 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: false,
-    store: MongoStore.create({mongoUrl: process.env.MONGO_URL})
+    store: new CookieStore({mongooseConnection: mongoose.connection})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
