@@ -4,8 +4,10 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import passport from "passport";
+import mongoose from "mongoose";
 import session from "express-session";
 import path from "path";
+import dotenv from "dotenv";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
@@ -13,6 +15,9 @@ import apiRouter from "./routers/apiRouter";
 import routes from "./routes";
 import { localsMiddleware } from './middlewares';
 import "./passport";
+
+dotenv.config();
+
 
 const app = express();
 
