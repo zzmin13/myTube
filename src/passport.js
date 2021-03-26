@@ -11,7 +11,9 @@ passport.use(User.createStrategy());
 passport.use(new GithubStrategy({
     clientID: process.env.GH_ID,
     clientSecret: process.env.GH_SECRET,
-    callbackURL: "http://localhost:4000/auth/github/callback"
+    callbackURL: process.env.PRODUCTION
+    ? "https://ancient-plateau-21850.herokuapp.com/auth/github/callback"
+    : "http://localhost:4000/auth/github/callback"
     }, githubLoginCallback)
     
 );
@@ -19,7 +21,9 @@ passport.use(new GithubStrategy({
 passport.use(new KakaoStrategy({
   clientID : process.env.KAKAO_ID,
   clientSecret: process.env.KAKAO_SECRET, // clientSecret을 사용하지 않는다면 넘기지 말거나 빈 스트링을 넘길 것
-  callbackURL : "http://localhost:4000/auth/kakao/callback"
+  callbackURL : process.env.PRODUCTION
+  ? "https://ancient-plateau-21850.herokuapp.com/auth/kakao/callback"
+  : "http://localhost:4000/auth/kakao/callback"
 }, kakaoLoginCallback)
 
 );
