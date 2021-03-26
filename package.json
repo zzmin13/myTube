@@ -52,9 +52,10 @@
     "copyAll": "shx cp -r src/static build && shx cp -r src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "prebuild" : "rm -rf build",
-    "start": "node build/init.js",
+    "start": "PRODUCTION=true node build/init.js",
     "prestart" : "npm run build"
   },
+
   "devDependencies": {
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
