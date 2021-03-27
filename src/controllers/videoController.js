@@ -1,6 +1,8 @@
 import routes from '../routes';
 import Video from "../models/Video";
 import Comment from "../models/Comment";
+import ffmpeg from "fluent-ffmpeg";
+import stream from 'path';
 
 // Home
 
@@ -35,15 +37,17 @@ export const search = async(req, res) => {
 
 export const getUpload = (req, res) => res.render("upload", {pageTitle: "Upload"});
 export const postUpload = async(req, res) => {
-    let {
+    const {
         body: {title,description},
-        file: {location}
+        file: {path}
     } = req; // 객체 비구조화 할당이라는 문법임. 가장 안 속에 있는 녀석만 변수처럼 사용 가능함
     //req안에는 req.body, req.file이 있으며 req.body에는 이미지,비디오를 제외한 정보가 전송된다
     //req.file에는 multer를 이용해서 받은 정보가 담겨 있다. 
-    // description = description.replaceAll('\r\n', '<br>');
+    const command = ffmpeg(stream.join(__dirname, "../", path))
+    .format('mp4')
+    .save(`${stream.join(__dirname, "../", path)}.mp4`);
     const newVideo = await Video.create({
-        fileUrl: location,
+        fileUrl: `${path}.mp4`,
         title,
         description,
         creator: req.user.id
