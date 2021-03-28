@@ -6,7 +6,14 @@ html
         link(rel="stylesheet", href = "/static/styles.css") 
     body
         include ../partials/header
-    
+        if messages.error 
+            span=messages.error
+        else if messages.info   
+            span=messages.info 
+        else if messages.success 
+            span=messages.success
+        else if messages.failure 
+            span=messages.failure
         main
             block content
 
