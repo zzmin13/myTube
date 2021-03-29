@@ -1,6 +1,7 @@
 const videoCreateDate = document.querySelector(".video__createDate");
 const moreDetailBtn = document.querySelector(".description_moreDetails");
 const videoDescription = document.querySelector(".video__description__text");
+
 const getDateString = () => {
     const year = videoCreateDate.id.split("-")[0];
     const month = videoCreateDate.id.split("-")[1];

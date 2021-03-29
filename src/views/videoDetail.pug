@@ -43,9 +43,9 @@ block content
                             span=comment.creator.name
                             span=comment.text
                         if loggedUser && comment.creator._id == loggedUser.id
-                            i.fas.fa-ellipsis-v.video__comments-ellipsis.jsCommentEllipsis
-                        .comments__ellipsisbox
-                            .comments__editBtn
+                            i.fas.fa-ellipsis-v.video__comments-ellipsis#jsCommentEllipsisBtn
+                        .comments__ellipsisbox#jsCommentEllipsisBox
+                            .comments__editBtn#jsCommentEditBtn
                                 i.fas.fa-pen
                                 span 수정
                             .comments__delteBtn#jsCommentDelBtn

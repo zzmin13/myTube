@@ -4,25 +4,17 @@ const addCommentForm = document.getElementById("jsAddComment");
 const requireLoginForm = document.getElementById("jsCommentLogout");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
-const commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
+const commentDelBtn = document.querySelector("#jsCommentDelBtn");
+const ellipsisBtn = document.getElementById("jsCommentEllipsisBtn");
+const ellipsisBox = document.getElementById("jsCommentEllipsisBox");
+
 
 const increaseNumber = () => {
     commentNumber.innerHTML = `${parseInt(commentNumber.innerHTML, 10) + 1}개의 덧글`;
 
 }
 const addComment = (comment) => {
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    const delBtn = document.createElement("button");
-    
-    delBtn.setAttribute("class", "video__comments-delete jsCommentDelBtn");
-    delBtn.innerHTML = '❌';
-    span.innerHTML = comment;
-
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    commentList.prepend(li);
-
+    location.reload();
     increaseNumber();
 }
 
@@ -51,26 +43,24 @@ const handleSubmit = (event) => {
 
 const handleDelBtn = async (event) => {
     const answer = confirm("덧글을 삭제하시겠습니까?");
+    const deleteTarget = event.currentTarget.parentNode.parentNode;
+    console.log(deleteTarget);
     if(answer === true){
-        const deleteTarget = event.target.parentNode;
         console.log(deleteTarget.id);
-
         const commentId = deleteTarget.id;
         const response = await axios({
             url: `/api/comment/${commentId}/delete`,
             method: "POST"
         });
         if(response.status === 200){
-            commentList.removeChild(event.target.parentNode);
+            // commentList.removeChild(deleteTarget);
+            location.reload();
         }
         commentNumber.innerHTML = `${parseInt(commentNumber.innerHTML, 10) - 1}개의 덧글`;
 
     }else{
         alert("삭제가 취소되었습니다.");
     }
-
-
-    
 }
 
 const goLoginPage = (event) => {
@@ -80,6 +70,20 @@ const goLoginPage = (event) => {
     document.body.appendChild(link);
     link.click();
 }
+
+const showEllipsisBox = () => {
+    console.log("박스 보임");
+    ellipsisBox.style.display = "flex";
+    ellipsisBtn.removeEventListener("click", showEllipsisBox);
+    ellipsisBtn.addEventListener("click", hideEllipsisBox);
+}
+const hideEllipsisBox = () => {
+    console.log("박스 안보임");
+    ellipsisBox.style.display = "none";
+    ellipsisBtn.removeEventListener("click", hideEllipsisBox);
+    ellipsisBtn.addEventListener("click", showEllipsisBox);
+}
+
 function init(){
     addCommentForm.addEventListener("submit", handleSubmit);
 }
@@ -89,12 +93,14 @@ if(addCommentForm){
 }
 
 if(commentDelBtn){
-    for (let i = 0; i < commentDelBtn.length; i++){
-        commentDelBtn[i].addEventListener("click", handleDelBtn);
-    }
+    commentDelBtn.addEventListener("click", handleDelBtn);
 }
 
 if(requireLoginForm){
     console.log("로그아웃 상태입니다.");
     requireLoginForm.addEventListener("click", goLoginPage);
+}
+
+if(ellipsisBtn){
+    ellipsisBtn.addEventListener("click", showEllipsisBox);
 }
