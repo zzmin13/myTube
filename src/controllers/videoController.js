@@ -67,16 +67,12 @@ export const videoDetail = async(req, res) => {
         const video = await Video.findById(id).populate("creator").populate("comments");
         const commentIDs = [];
         video.comments.map((element) => commentIDs.push(element.id));
-        console.log(typeof commentIDs[0]);
-
         const comments = [];
         let comment;
         for(let i = 0; i < commentIDs.length; i++){
             comment = await Comment.findById(commentIDs[i]).populate("creator");
             comments.push(comment);
         }
-        console.log(comments);
-
         res.render("videoDetail", {pageTitle: video.title, video, comments});
     }catch(error){
         console.log(error);
