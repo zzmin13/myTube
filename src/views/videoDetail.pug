@@ -27,8 +27,12 @@ block content
         .video__comments
             span.video__comment-number#jsCommentNumber=video.comments.length
                 span|개의 덧글
-            form.add__comment#jsAddComment
+            if loggedUser
+                form.add__comment#jsAddComment
                     input(type="text", placeholder="Add a comment", name="comment")
+            else
+                form.add__comment#jsCommentLogout
+                    input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()    
                     li(id=comment.id)

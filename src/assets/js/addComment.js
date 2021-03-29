@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const addCommentForm = document.getElementById("jsAddComment");
+const requireLoginForm = document.getElementById("jsCommentLogout");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
 const commentDelBtn = document.getElementsByClassName("jsCommentDelBtn");
@@ -72,6 +73,13 @@ const handleDelBtn = async (event) => {
     
 }
 
+const goLoginPage = (event) => {
+    console.log(event.target.id);
+    const link = document.createElement("a");
+    link.href = event.target.id;
+    document.body.appendChild(link);
+    link.click();
+}
 function init(){
     addCommentForm.addEventListener("submit", handleSubmit);
 }
@@ -84,4 +92,9 @@ if(commentDelBtn){
     for (let i = 0; i < commentDelBtn.length; i++){
         commentDelBtn[i].addEventListener("click", handleDelBtn);
     }
+}
+
+if(requireLoginForm){
+    console.log("로그아웃 상태입니다.");
+    requireLoginForm.addEventListener("click", goLoginPage);
 }
