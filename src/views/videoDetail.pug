@@ -27,15 +27,18 @@ block content
         .video__comments
             span.video__comment-number#jsCommentNumber=video.comments.length
                 span|개의 덧글
-            if loggedUser
-                form.add__comment#jsAddComment
-                    input(type="text", placeholder="Add a comment", name="comment")
-            else
-                form.add__comment#jsCommentLogout
-                    input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
+            .video__comment-form
+                if loggedUser
+                    img.u-avatar-comment(src=loggedUser.avatarUrl)
+                    form.add__comment#jsAddComment
+                        input(type="text", placeholder="Add a comment", name="comment")
+                else
+                    form.add__comment#jsCommentLogout
+                        input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
             ul.video__comments-list#jsCommentList
-                each comment in video.comments.reverse()    
+                each comment in comments.reverse()    
                     li(id=comment.id)
+                        img.u-avatar-comment(src=comment.creator.avatarUrl)
                         span=comment.text
                         if loggedUser
                             if comment.creator._id == loggedUser.id

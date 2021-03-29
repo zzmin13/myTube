@@ -89,14 +89,21 @@
       font-size: 18px;
     }
     .add__comment {
-      display: flex;
-      justify-content: flex-start;
-      margin-top: 25px;
       width: 100%;
+      margin-left: 5px;
       input {
         width: 100%;
+        background-color: transparent;
+        border-bottom: 1px solid #e0e0e0;
       }
     }
+  }
+  .video__comment-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    margin-top: 20px;
   }
   .video__comments-list {
     margin-top: 50px;

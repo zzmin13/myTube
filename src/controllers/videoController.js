@@ -1,6 +1,7 @@
 import routes from '../routes';
 import Video from "../models/Video";
 import Comment from "../models/Comment";
+import User from "../models/User";
 import ffmpeg from "fluent-ffmpeg";
 import stream from 'path';
 
@@ -64,8 +65,19 @@ export const videoDetail = async(req, res) => {
         user} = req;
     try{
         const video = await Video.findById(id).populate("creator").populate("comments");
-        res.render("videoDetail", {pageTitle: video.title, video});
-        console.log(video);
+        const commentIDs = [];
+        video.comments.map((element) => commentIDs.push(element.id));
+        console.log(typeof commentIDs[0]);
+
+        const comments = [];
+        let comment;
+        for(let i = 0; i < commentIDs.length; i++){
+            comment = await Comment.findById(commentIDs[i]).populate("creator");
+            comments.push(comment);
+        }
+        console.log(comments);
+
+        res.render("videoDetail", {pageTitle: video.title, video, comments});
     }catch(error){
         console.log(error);
         res.redirect(routes.home);
