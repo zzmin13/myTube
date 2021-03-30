@@ -6,7 +6,7 @@ header.header
                 span #{siteName}
         .header__column
             form(action=routes.search, method="get")
-                input(type="text", placeholder="검색", name="term")
+                input#jsSearchBar(type="text", placeholder="검색", name="term")
                 button(type="submit", value="Search", title="검색")
                     i.fas.fa-search
         .header__column

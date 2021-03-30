@@ -1,5 +1,16 @@
 .search__header {
   margin-bottom: 20px;
+  font-size: 22px;
+  text-align: center;
+  .searchingBy {
+    color: red;
+    font-weight: 600;
+  }
+  .search__NoVideos {
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+  }
 }
 .search__videos {
   display: grid;

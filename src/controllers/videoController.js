@@ -1,9 +1,6 @@
 import routes from '../routes';
 import Video from "../models/Video";
 import Comment from "../models/Comment";
-import User from "../models/User";
-import ffmpeg from "fluent-ffmpeg";
-import stream from 'path';
 
 // Home
 
@@ -166,6 +163,7 @@ export const postAddComment = async(req,res) => {
         });
         video.comments.push(newComment.id);
         video.save();
+        console.log(newComment.id);
     }catch(error){
         res.status(400);
     }finally{
