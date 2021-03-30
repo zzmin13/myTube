@@ -7,13 +7,14 @@ block content
             src: video.fileUrl
         })
         .video__info
-            if loggedUser
-                if video.creator.id === loggedUser.id
+            .video__info__text
+                h5.video__title=video.title
+                span.video__views 조회수 #{video.views}회 • 
+                span(id=video.createdAt).video__createDate=video.createdAt
+            if loggedUser && video.creator.id === loggedUser.id
+                .video__editBox
                     a(href=routes.editVideo(video.id))
-                        button Edit video
-            h5.video__title=video.title
-            span.video__views 조회수 #{video.views}회 • 
-            span(id=video.createdAt).video__createDate=video.createdAt
+                        i.fas.fa-pencil-alt.videoEditBtn  편집
         .video__author
             a(href=routes.userDetail(video.creator.id))
                 if video.creator.avatarUrl === undefined

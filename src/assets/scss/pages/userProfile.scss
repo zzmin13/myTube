@@ -1,35 +1,64 @@
 .user-profile {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .user-profile__header {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    .user-profile__header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 18px;
-      .profile__username {
-        font-size: 18px;
-        margin-top: 15px;
-      }
-      .profile__useremail{
-          font-size: 15px;
-          margin-top: 5px;
-      }
+    align-items: center;
+    margin-bottom: 18px;
+    .profile__username {
+      font-size: 18px;
+      margin-top: 15px;
     }
-    .user-profile__btns {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      a:not(:last-child) {
-        margin-right: 20px;
-      }
-    }
-    .uploaded-videos{
-        display: grid;
-        grid-template-columns: repeat(4, minmax(150px, 1fr));
-        grid-gap: 30px;
-        margin-top: 30px;
+    .profile__useremail {
+      font-size: 15px;
+      margin-top: 5px;
     }
   }
+  .user-profile__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    a:not(:last-child) {
+      margin-right: 20px;
+    }
+    button {
+      width: 100%;
+      box-shadow: inset 0px 1px 0px 0px #ffffff;
+      background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      background-color: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #dcdcdc;
+      cursor: pointer;
+      color: #666666;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 6px 24px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #ffffff;
+
+      &:hover {
+        background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        background-color: #f6f6f6;
+      }
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+
+      &::placeholder {
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+  .uploaded-videos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    grid-gap: 30px;
+    margin-top: 30px;
+  }
+}
