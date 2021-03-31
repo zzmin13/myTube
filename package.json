@@ -57,7 +57,6 @@
     "start": "PRODUCTION=true node build/init.js",
     "prestart" : "npm run build"
   },
-
   "devDependencies": {
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
