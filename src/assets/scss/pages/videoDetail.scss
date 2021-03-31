@@ -1,7 +1,7 @@
 .video-detail__container {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 50%;
 
   .video__info {
     display: flex;
@@ -199,5 +199,18 @@
     span {
       margin-left: 10px;
     }
+  }
+}
+
+//tablet(768~1024px)
+@media (min-width: 768px) and (max-width: 1024px) {
+  .video-detail__container {
+    width: 100%;
+  }
+}
+//mobile(~768px)
+@media (max-width: 768px) {
+  .video-detail__container {
+    width: 100%;
   }
 }

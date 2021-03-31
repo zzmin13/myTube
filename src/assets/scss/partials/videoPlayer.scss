@@ -39,7 +39,10 @@
       margin-left: 20px;
       display: flex;
       align-items: center;
-
+      width: 100%;
+      .videoTime {
+        width: 250px;
+      }
       .videoPlayer__volumeControl {
         display: flex;
         &:hover #jsVolume {

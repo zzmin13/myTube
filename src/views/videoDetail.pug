@@ -30,7 +30,10 @@ block content
                 span|개의 덧글
             .video__comment-form
                 if loggedUser
-                    img.u-avatar-comment(src=loggedUser.avatarUrl)
+                    if loggedUser.avatarUrl === undefined
+                        img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                    else
+                        img.u-avatar-comment(src=loggedUser.avatarUrl)
                     form.add__comment#jsAddComment
                         input(type="text", placeholder="덧글을 입력하세요", name="comment")
                 else
@@ -39,7 +42,10 @@ block content
             ul.video__comments-list#jsCommentList
                 each comment in comments.reverse()    
                     li(id=comment.id)
-                        img.u-avatar-comment(src=comment.creator.avatarUrl)
+                        if loggedUser.avatarUrl === undefined
+                            img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                        else
+                            img.u-avatar-comment(src=comment.creator.avatarUrl)
                         .video__comments-text
                             span=comment.creator.name
                             span=comment.text
