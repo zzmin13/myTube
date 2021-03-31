@@ -1,7 +1,12 @@
+.videoDetail_whole_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 .video-detail__container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
 
   .video__info {
     display: flex;
@@ -115,7 +120,8 @@
   margin-top: 25px;
   text-align: center;
   .video__comment-number {
-    font-size: 18px;
+    font-size: 1.125em;
+    font-weight: 600;
   }
   .add__comment {
     width: 100%;
@@ -202,15 +208,40 @@
   }
 }
 
+.recommend__videos {
+  width: 30%;
+  .recommend__text {
+    font-size: 1.125em;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .videoBlock {
+    margin-bottom: 30px;
+  }
+}
 //tablet(768~1024px)
 @media (min-width: 768px) and (max-width: 1024px) {
+  .videoDetail_whole_container {
+    flex-direction: column;
+  }
   .video-detail__container {
+    width: 100%;
+  }
+  .recommend__videos {
+    margin-top: 30px;
     width: 100%;
   }
 }
 //mobile(~768px)
 @media (max-width: 768px) {
+  .videoDetail_whole_container {
+    flex-direction: column;
+  }
   .video-detail__container {
+    width: 100%;
+  }
+  .recommend__videos {
+    margin-top: 30px;
     width: 100%;
   }
 }

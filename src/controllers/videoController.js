@@ -62,6 +62,7 @@ export const videoDetail = async(req, res) => {
         user} = req;
     try{
         const video = await Video.findById(id).populate("creator").populate("comments");
+        const recommendVideos = await Video.find({}).sort({views : -1}).limit(5).populate("creator");
         const commentIDs = [];
         video.comments.map((element) => commentIDs.push(element.id));
         const comments = [];
@@ -70,7 +71,7 @@ export const videoDetail = async(req, res) => {
             comment = await Comment.findById(commentIDs[i]).populate("creator");
             comments.push(comment);
         }
-        res.render("videoDetail", {pageTitle: video.title, video, comments});
+        res.render("videoDetail", {pageTitle: video.title, video, comments, recommendVideos});
     }catch(error){
         console.log(error);
         res.redirect(routes.home);

@@ -1,60 +1,73 @@
 extends layouts/main
 include mixins/videoPlayer
+include mixins/videoBlock
 
-block content 
-    .video-detail__container
-        +videoPlayer({
-            src: video.fileUrl
-        })
-        .video__info
-            .video__info__text
-                h5.video__title=video.title
-                span.video__views 조회수 #{video.views}회 • 
-                span(id=video.createdAt).video__createDate=video.createdAt
-            if loggedUser && video.creator.id === loggedUser.id
-                .video__editBox
-                    a(href=routes.editVideo(video.id))
-                        i.fas.fa-pencil-alt.videoEditBtn  편집
-        .video__author
-            a(href=routes.userDetail(video.creator.id))
-                if video.creator.avatarUrl === undefined
-                    img.u-avatar-video(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
-                else
-                    img.u-avatar-video(src=video.creator.avatarUrl)
-            a(href=routes.userDetail(video.creator.id)).creator__name=video.creator.name
-        .video__description
-            p.video__description__text=video.description
-            .description_moreDetails 더보기
-        .video__comments
-            span.video__comment-number#jsCommentNumber=video.comments.length
-                span|개의 덧글
-            .video__comment-form
-                if loggedUser
-                    if loggedUser.avatarUrl === undefined
-                        img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+block content
+    .videoDetail_whole_container
+        .video-detail__container
+            +videoPlayer({
+                src: video.fileUrl
+            })
+            .video__info
+                .video__info__text
+                    h5.video__title=video.title
+                    span.video__views 조회수 #{video.views}회 • 
+                    span(id=video.createdAt).video__createDate=video.createdAt
+                if loggedUser && video.creator.id === loggedUser.id
+                    .video__editBox
+                        a(href=routes.editVideo(video.id))
+                            i.fas.fa-pencil-alt.videoEditBtn  편집
+            .video__author
+                a(href=routes.userDetail(video.creator.id))
+                    if video.creator.avatarUrl === undefined
+                        img.u-avatar-video(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                     else
-                        img.u-avatar-comment(src=loggedUser.avatarUrl)
-                    form.add__comment#jsAddComment
-                        input(type="text", placeholder="덧글을 입력하세요", name="comment")
-                else
-                    form.add__comment#jsCommentLogout
-                        input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
-            ul.video__comments-list#jsCommentList
-                each comment in comments.reverse()    
-                    li(id=comment.id)
+                        img.u-avatar-video(src=video.creator.avatarUrl)
+                a(href=routes.userDetail(video.creator.id)).creator__name=video.creator.name
+            .video__description
+                p.video__description__text=video.description
+                .description_moreDetails 더보기
+            .video__comments
+                span.video__comment-number#jsCommentNumber=video.comments.length
+                    span|개의 덧글
+                .video__comment-form
+                    if loggedUser
                         if loggedUser.avatarUrl === undefined
                             img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                         else
-                            img.u-avatar-comment(src=comment.creator.avatarUrl)
-                        .video__comments-text
-                            span=comment.creator.name
-                            span=comment.text
-                        if loggedUser && comment.creator._id == loggedUser.id
-                            i.fas.fa-ellipsis-v.video__comments-ellipsis#jsCommentEllipsisBtn
-                        .comments__ellipsisbox#jsCommentEllipsisBox
-                            .comments__editBtn#jsCommentEditBtn
-                                i.fas.fa-pen
-                                span 수정
-                            .comments__delteBtn#jsCommentDelBtn
-                                i.fas.fa-trash
-                                span 삭제
+                            img.u-avatar-comment(src=loggedUser.avatarUrl)
+                        form.add__comment#jsAddComment
+                            input(type="text", placeholder="덧글을 입력하세요", name="comment")
+                    else
+                        form.add__comment#jsCommentLogout
+                            input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
+                ul.video__comments-list#jsCommentList
+                    each comment in comments.reverse()    
+                        li(id=comment.id)
+                            if loggedUser.avatarUrl === undefined
+                                img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                            else
+                                img.u-avatar-comment(src=comment.creator.avatarUrl)
+                            .video__comments-text
+                                span=comment.creator.name
+                                span=comment.text
+                            if loggedUser && comment.creator._id == loggedUser.id
+                                i.fas.fa-ellipsis-v.video__comments-ellipsis#jsCommentEllipsisBtn
+                            .comments__ellipsisbox#jsCommentEllipsisBox
+                                .comments__editBtn#jsCommentEditBtn
+                                    i.fas.fa-pen
+                                    span 수정
+                                .comments__delteBtn#jsCommentDelBtn
+                                    i.fas.fa-trash
+                                    span 삭제
+        .recommend__videos
+            .recommend__text 인기 동영상
+            each video in recommendVideos 
+                    +videoBlock({
+                        id: video.id,
+                        title: video.title,
+                        views: video.views,
+                        videoFile: video.fileUrl,
+                        creatorName: video.creator.name,
+                        creatorAvatar: video.creator.avatarUrl
+                    })
