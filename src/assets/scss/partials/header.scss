@@ -1,110 +1,234 @@
-.header {
-  background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin-bottom: 50px;
-  z-index: 1;
-
-  .header__wrapper {
-    padding: 5px 0px;
+//tablet(768~1024px)
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin: 0 auto;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    margin-bottom: 50px;
+    z-index: 1;
 
-    .header__column {
-      i {
-        color: $red;
-        font-size: 30px;
-      }
-      &:first-child {
-        a {
-          display: flex;
-        }
-        span {
-          color: black;
-          font-weight: 700;
-          align-self: center;
-          margin-left: 5px;
-        }
-      }
-      &:nth-child(2) {
-        width: 100%;
-        justify-self: center;
-        form {
-          display: flex;
-          flex-direction: row;
-        }
-        input {
-          padding: 7px 10px;
-          border: 0.5px solid #e0e0e0;
-          border-radius: 2px;
-          max-width: none;
+    .header__wrapper {
+      padding: 5px 30px;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
 
-          &::placeholder {
-            font-weight: 300;
-            color: rgba(0, 0, 0, 0.7);
-          }
+      .header__column {
+        i {
+          color: $red;
+          font-size: 1.875em;
         }
-        button {
-          background-color: white;
-          width: 10%;
-          border: none;
-          i {
-            font-size: 20px;
-            color: grey;
-          }
-        }
-      }
-      &:last-child {
-        justify-self: end;
-
-        ul {
-          display: flex;
-          align-items: center;
-          color: black;
-          font-weight: 600;
-          text-transform: uppercase;
-
-          li:not(:last-child) {
-            margin-right: 15px;
-          }
-        }
-
-        .user-profile-detail {
-          display: none;
-          flex-direction: column;
-          background-color: white;
-          border: 0.5px solid #e0e0e0;
-          border-radius: 10px;
-          border-top: none;
-          position: absolute;
-          top: 0px;
-          right: 80px;
-          width: 100px;
-          height: 120px;
-          justify-content: center;
-          cursor: pointer;
+        &:first-child {
           a {
-            padding: 10px;
-            text-transform: uppercase;
-            text-align: center;
-            font-weight: 500;
-            &:hover {
-              color: #90caf9;
+            display: flex;
+          }
+          span {
+            color: black;
+            font-weight: 700;
+            align-self: center;
+            margin-left: 5px;
+          }
+        }
+        &:nth-child(2) {
+          width: 100%;
+          justify-self: center;
+          form {
+            display: flex;
+            flex-direction: row;
+          }
+          input {
+            padding: 7px 10px;
+            border: 0.5px solid #e0e0e0;
+            border-radius: 2px;
+            width: 100%;
+
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
+          button {
+            background-color: white;
+            width: 10%;
+            border: none;
+            i {
+              font-size: 20px;
+              color: grey;
             }
           }
         }
-        .user-profile {
-          cursor: pointer;
+        &:last-child {
+          justify-self: end;
 
-          .u-avatar-default {
-            height: 30px;
-            width: 30px;
+          ul {
+            display: flex;
+            align-items: center;
+            color: black;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            li:not(:last-child) {
+              margin-right: 15px;
+            }
+          }
+
+          .user-profile-detail {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            border: 0.5px solid #e0e0e0;
+            border-radius: 10px;
+            border-top: none;
+            position: absolute;
+            top: 0px;
+            right: 80px;
+            width: 100px;
+            height: 120px;
+            justify-content: center;
+            cursor: pointer;
+            a {
+              padding: 10px;
+              text-transform: uppercase;
+              text-align: center;
+              font-weight: 500;
+              &:hover {
+                color: #90caf9;
+              }
+            }
+          }
+          .user-profile {
+            cursor: pointer;
+
+            .u-avatar-default {
+              height: 30px;
+              width: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//mobile(~768px)
+@media (max-width: 768px) {
+}
+
+//pc (1025px 이상)
+@media (min-width: 1025px) {
+  .header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 50px;
+    z-index: 1;
+
+    .header__wrapper {
+      padding: 5px 0px;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+
+      .header__column {
+        i {
+          color: $red;
+          font-size: 30px;
+        }
+        &:first-child {
+          a {
+            display: flex;
+          }
+          span {
+            color: black;
+            font-weight: 700;
+            align-self: center;
+            margin-left: 5px;
+          }
+        }
+        &:nth-child(2) {
+          width: 100%;
+          justify-self: center;
+          form {
+            display: flex;
+            flex-direction: row;
+          }
+          input {
+            padding: 7px 10px;
+            border: 0.5px solid #e0e0e0;
+            border-radius: 2px;
+            width: 100%;
+
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
+          button {
+            background-color: white;
+            width: 10%;
+            border: none;
+            i {
+              font-size: 20px;
+              color: grey;
+            }
+          }
+        }
+        &:last-child {
+          justify-self: end;
+
+          ul {
+            display: flex;
+            align-items: center;
+            color: black;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            li:not(:last-child) {
+              margin-right: 15px;
+            }
+          }
+
+          .user-profile-detail {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            border: 0.5px solid #e0e0e0;
+            border-radius: 10px;
+            border-top: none;
+            position: absolute;
+            top: 0px;
+            right: 80px;
+            width: 100px;
+            height: 120px;
+            justify-content: center;
+            cursor: pointer;
+            a {
+              padding: 10px;
+              text-transform: uppercase;
+              text-align: center;
+              font-weight: 500;
+              &:hover {
+                color: #90caf9;
+              }
+            }
+          }
+          .user-profile {
+            cursor: pointer;
+
+            .u-avatar-default {
+              height: 30px;
+              width: 30px;
+            }
           }
         }
       }

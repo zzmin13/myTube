@@ -115,10 +115,11 @@
   }
   .add__comment {
     width: 100%;
-    margin-left: 5px;
+    margin-left: 10px;
     input {
       width: 100%;
       background-color: transparent;
+      padding-bottom: 10px;
       border-bottom: 1px solid #e0e0e0;
     }
   }

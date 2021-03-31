@@ -3,52 +3,111 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  form {
+  .videoUploadForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 600px;
     margin-bottom: 50px;
 
-    input:not([type="file"]),
     .fileUpload {
-      width: 320px;
+      border-radius: 5px;
+      width: 400px;
       padding-top: 10px;
       padding-bottom: 10px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      &:not(:last-child) {
-        margin-bottom: 25px;
-      }
-    }
-    textarea {
+      background-color: white;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       margin-bottom: 25px;
-      width: 600px;
-      padding: 7px 10px;
-      width: 100%;
-      border-radius: 5px;
-      font-size: 14px;
-      border: none;
-      color: $black;
-      font-weight: 600;
-      background-color: white;
-      max-width: 600px;
-      height: 300px;
-      resize: none;
-    }
-    input[type="submit"] {
-      background-color: #3498db;
-      color: white;
+      .fileicon {
+        display: inline-block;
+        i {
+          margin-left: 25px;
+          font-size: 16px;
+          color: #757575;
+        }
+      }
     }
   }
-  a {
-    max-width: 320px;
-    width: 100%;
+}
+.video_upload_title {
+  width: 80%;
+  height: 50px;
+  padding: 7px 10px;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 2px;
+  font-size: 18px;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.video_upload_description {
+  margin-top: 30px;
+  font-size: 16px;
+  padding: 7px 10px;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 2px;
+  resize: none;
+  width: 80%;
+  height: 300px;
+  margin-bottom: 30px;
+  overflow-y: scroll;
+  &:focus {
+    outline: none;
   }
-  .fileUpload {
-    label {
-      font-weight: 300;
-      margin-right: 10px;
-    }
+}
+.video_uploadBtn {
+  width: 150px;
+  box-shadow: inset 0px 1px 0px 0px #bee2f9;
+  background: linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+  background-color: #63b8ee;
+  border-radius: 5px;
+  border: 1px solid #3866a3;
+  cursor: pointer;
+  color: white;
+  font-family: Times New Roman;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 17px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #7cacde;
+  margin-bottom: 30px;
+
+  &:hover {
+    background: linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+    background-color: #468ccf;
   }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+.editProfile_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.editProfile_name,
+.editProfile_email,
+.editProfile_fileUpload {
+  padding: 7px 10px;
+  width: 320px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: $black;
+  font-weight: 600;
+  background-color: white;
+  resize: none;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+.video_editForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
 }
