@@ -4,13 +4,11 @@ block content
     .form-container
         .record-container#jsRecordContainer
             video#jsVideoPreview
-            button.recordBtn#jsRecordBtn Start Recording 
+            button.recordBtn#jsRecordBtn 비디오 녹화하기 
         form#jsUploadForm.videoUploadForm(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-            div.fileUpload
+            div.whole_fileUpload
                 label(for="file") Video File  
                 input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-                div.fileicon
-                    i.fas.fa-paperclip
             input.video_upload_title(type="text",name="title", placeholder="제목을 입력하세요" ,required=true)
             textarea.video_upload_description(name="description", placeholder="여기에 영상의 설명을 입력해주세요" ,required=true)
             input.whole_submitBtn(type="submit", value="비디오 업로드")

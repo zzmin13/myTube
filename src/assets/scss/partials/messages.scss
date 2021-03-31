@@ -22,18 +22,28 @@
   z-index: 9;
   animation: flashAnimation 3s ease-in-out forwards;
   &.error {
-    background-color: orange;
+    background-color: #ef5350;
+    .flash-message__text {
+      color: white;
+      font-weight: 500;
+      font-size: 1em;
+    }
   }
   &.success {
-    background-color: green;
+    background-color: #2196f3;
+    .flash-message__text {
+      color: white;
+      font-weight: 500;
+      font-size: 1em;
+    }
   }
 
   &.info {
-    background-color: yellow;
-  }
-  .flash-message__text {
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
+    background-color: #ffe082;
+    .flash-message__text {
+      color: black;
+      font-weight: 500;
+      font-size: 1em;
+    }
   }
 }
