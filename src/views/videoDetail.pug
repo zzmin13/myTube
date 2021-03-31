@@ -45,7 +45,7 @@ block content
                     each comment in comments.reverse()    
                         li(id=comment.id)
                             if comment.creator.avatarUrl === undefined
-                                a(href=routes.userDetail(comment.creator.id))
+                                a(href=routes.userDetail(comment.creator._id))
                                     img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                             else
                                 img.u-avatar-comment(src=comment.creator.avatarUrl)
