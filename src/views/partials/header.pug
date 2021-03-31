@@ -2,7 +2,7 @@ header.header
     .header__wrapper
         .header__column
             a(href=routes.home,title="홈")
-                i.fab.fa-youtube
+                i.fab.fa-youtube.youtubeBtn
                 span #{siteName}
         .header__column
             form(action=routes.search, method="get")
@@ -20,7 +20,7 @@ header.header
                     a(href=routes.logout, title="로그아웃") Log Out
             if !loggedUser
                 .user-profile#jsHeaderProfile
-                    i.fas.fa-bars
+                    i.fas.fa-bars.hamburgerBtn
             else
                 .user-profile#jsHeaderProfile
                     if loggedUser.avatarUrl === undefined

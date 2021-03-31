@@ -9,27 +9,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7px 10px;
+    padding: 15px 10px;
     border-style: none;
     border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 
     &:not(:last-child) {
       margin-bottom: 15px;
     }
     span {
       margin-right: 10px;
-      font-size: 20px;
+      font-size: 1.125em;
       font-weight: bold;
     }
   }
   .social-login--github {
-    background-color: $black;
+    background-color: #374151;
     font-weight: bold;
     color: white;
   }
   .social-login--kakao {
-    background-color: #ffeb3b;
+    background-color: #fee500;
     font-weight: bold;
     color: #1b0000;
   }

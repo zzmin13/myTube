@@ -21,7 +21,7 @@
 
       .header__column {
         width: 100%;
-        i {
+        .youtubeBtn {
           color: $red;
           font-size: 30px;
         }
@@ -140,7 +140,7 @@
       align-items: center;
 
       .header__column {
-        i {
+        .youtubeBtn {
           color: $red;
           font-size: 2.813em;
         }
@@ -265,7 +265,7 @@
 
       .header__column {
         width: 100%;
-        i {
+        .youtubeBtn {
           color: $red;
           font-size: 30px;
         }
@@ -362,4 +362,8 @@
       }
     }
   }
+}
+
+.hamburgerBtn {
+  font-size: 1.875em;
 }
