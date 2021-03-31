@@ -18,8 +18,15 @@ main {
   min-height: 70vh;
 }
 
+//mobile(~768px)
+@media (max-width: 768px) {
+  main {
+    margin: 200px auto 0 auto;
+  }
+}
+
 button.delete {
-  width: 150px;
+  width: 320px;
   box-shadow: inset 0px 1px 9px 0px #cf866c;
   background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
   background-color: #d0451b;

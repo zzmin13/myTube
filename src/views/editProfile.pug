@@ -2,10 +2,10 @@ extends layouts/main
 
 block content 
     .form-container 
-        form.editProfile_form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
-            .editProfile_fileUpload
+        form.whole_form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
+            .whole_fileUpload
                 label(for="avatar") Avatar
                 input(type="file", id="avatar", name="avatar", accept="image/*")
-            input.editProfile_name(type="text",name="name", placeholder="Name", value=loggedUser.name)
-            input.editProfile_email(type="email", name="email", placeholder="Email", value=loggedUser.email)
-            input.video_uploadBtn(type="submit", value="프로필 업데이트")
+            input.whole_input(type="text",name="name", placeholder="Name", value=loggedUser.name)
+            input.whole_input(type="email", name="email", placeholder="Email", value=loggedUser.email)
+            input.whole_submitBtn(type="submit", value="프로필 업데이트")
