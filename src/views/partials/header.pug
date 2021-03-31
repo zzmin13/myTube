@@ -10,21 +10,22 @@ header.header
                 button(type="submit", value="Search", title="검색")
                     i.fas.fa-search
         .header__column
-            if !loggedUser
-                ul
-                    li
-                        a(href=routes.join, title="회원가입") Join
-                    li
-                        a(href=routes.login, title="로그인") Log In
-            else 
-                .user-profile-detail#jsHeaderProfileDetail
+            .user-profile-detail#jsHeaderProfileDetail
+                if !loggedUser
+                    a(href=routes.join, title="동영상 업로드") Join
+                    a(href=routes.login, title="프로필") Log In
+                else 
                     a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
                     a(href=routes.me, title="프로필") My page
                     a(href=routes.logout, title="로그아웃") Log Out
-                    
+            if !loggedUser
+                .user-profile#jsHeaderProfile
+                    i.fas.fa-bars
+            else
                 .user-profile#jsHeaderProfile
                     if loggedUser.avatarUrl === undefined
                         img.u-avatar-default(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                     else
                         img.u-avatar-default(src=loggedUser.avatarUrl)
-                        
+            
+
