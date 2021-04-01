@@ -1,73 +1,18 @@
-doctype html
-html
-    head
-        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.15.2/css/all.css", integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu", crossorigin="anonymous")
-        title #{pageTitle} | #{siteName}
-        link(rel="stylesheet", href = "/static/styles.css") 
-    body
-        header.header
-            .header__wrapper
-                .header__column
-                    a(href=routes.home,title="홈")
-                        i.fab.fa-youtube
-                        span #{siteName}
-                .header__column
-                    form(action=routes.search, method="get")
-                        input(type="text", placeholder="검색", name="term", value=searchingBy)
-                        button(type="submit", value="Search", title="검색")
-                            i.fas.fa-search
-                .header__column
-                    if !loggedUser
-                        ul
-                            li
-                                a(href=routes.join, title="회원가입") Join
-                            li
-                                a(href=routes.login, title="로그인") Log In
-                    else 
-                        .user-profile-detail#jsHeaderProfileDetail
-                            a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
-                            a(href=routes.me, title="프로필") My page
-                            a(href=routes.logout, title="로그아웃") Log Out
-                            
-                        .user-profile#jsHeaderProfile
-                            if loggedUser.avatarUrl === undefined
-                                img.u-avatar-default(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
-                            else
-                                img.u-avatar-default(src=loggedUser.avatarUrl)
-        include ./mixins/message
-        include mixins/videoBlock
-        if messages.error 
-            +message({
-                type:'error',
-                text:messages.error
-            })
-        else if messages.info   
-              +message({
-                type:'info',
-                text:messages.info
-            })
-        else if messages.success 
-             +message({
-                type:'success',
-                text:messages.success
-            })
-        main
-            block content
-                .search__header
-                    span.searchingBy #{searchingBy}
-                    span  에 대한 검색 결과
-                    if videos.length === 0
-                        .search__NoVideos 비디오가 없습니다.
-                .search__videos
-                    each video in videos
-                        +videoBlock({
-                            title: video.title,
-                            views: video.views,
-                            videoFile: video.fileUrl,
-                            id: video.id,
-                            creatorName: video.creator.name,
-                            creatorAvatar: video.creator.avatarUrl
-
-                        })
-        include ./partials/footer
-        script(src="/static/main.js")
+extends layouts/main
+include mixins/videoBlock
+block content 
+    .search__header
+        span.searchingBy #{searchingBy}
+        span  에 대한 검색 결과
+        if videos.length === 0
+            .search__NoVideos 비디오가 없습니다.
+    .search__videos
+        each video in videos
+            +videoBlock({
+                title: video.title,
+                views: video.views,
+                videoFile: video.fileUrl,
+                id: video.id,
+                creatorName: video.creator.name,
+                creatorAvatar: video.creator.avatarUrl
+             })

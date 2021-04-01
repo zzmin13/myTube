@@ -2,9 +2,9 @@ extends layouts/main
 
 block content 
     .form-container 
-        form.video_editForm(action=routes.editVideo(video.id), method="post")
-            input.video_upload_title(type="text", placeholder="Title", name="title", value=video.title)
-            textarea.video_upload_description(name="description", placeholder="Description")=video.description
+        form.whole_form(action=routes.editVideo(video.id), method="post")
+            input.whole_input(type="text", placeholder="Title", name="title", value=video.title)
+            textarea.whole_description(name="description", placeholder="Description")=video.description
             input.whole_submitBtn(type="submit" value="비디오 업데이트")
         a.form-container__link.form-container__link--delete(id=routes.deleteVideo(video.id), href="#")
             button.delete 비디오 삭제하기

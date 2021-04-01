@@ -5,12 +5,12 @@ block content
         .record-container#jsRecordContainer
             video#jsVideoPreview
             button.recordBtn#jsRecordBtn 비디오 녹화하기 
-        form#jsUploadForm.videoUploadForm(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+        form#jsUploadForm.whole_form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
             div.whole_fileUpload
                 label(for="file") Video File  
                 input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-            input.video_upload_title(type="text",name="title", placeholder="제목을 입력하세요" ,required=true)
-            textarea.video_upload_description(name="description", placeholder="여기에 영상의 설명을 입력해주세요" ,required=true)
+            input.whole_input(type="text",name="title", placeholder="제목을 입력하세요" ,required=true)
+            textarea.whole_description(name="description", placeholder="여기에 영상의 설명을 입력해주세요" ,required=true)
             input.whole_submitBtn(type="submit", value="비디오 업로드")
         .loadingImage
             img(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/091ed0ceebc72cbf7465e650f9dc14b2")

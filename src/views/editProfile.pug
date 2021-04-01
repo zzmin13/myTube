@@ -1,11 +1,17 @@
 extends layouts/main
 
 block content 
-    .form-container 
-        form.whole_form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
-            .whole_fileUpload
-                label(for="avatar") Avatar
-                input(type="file", id="avatar", name="avatar", accept="image/*")
-            input.whole_input(type="text",name="name", placeholder="Name", value=loggedUser.name)
-            input.whole_input(type="email", name="email", placeholder="Email", value=loggedUser.email)
-            input.whole_submitBtn(type="submit", value="프로필 업데이트")
+    .form-container
+        .page_title 
+            span Edit Profile
+        .white_container
+            form.whole_form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
+                span 프로필 사진
+                .whole_fileUpload.shortInput
+                    label(for="avatar") Avatar
+                    input(type="file", id="avatar", name="avatar", accept="image/*")
+                span 이름
+                input.whole_input.shortInput(type="text",name="name", placeholder="Name", value=loggedUser.name)
+                span 이메일
+                input.whole_input.shortInput(type="email", name="email", placeholder="Email", value=loggedUser.email)
+                input.whole_submitBtn(type="submit", value="프로필 업데이트")

@@ -1,11 +1,22 @@
 extends layouts/main
 
-block content 
-    .form-container 
-        form.whole_form(action=routes.join, method="post")
-            input.whole_fileUpload(type="text" name="name", placeholder="이름", required=true)
-            input.whole_input(type="email", name="email", placeholder="이메일", required=true)
-            input.whole_input(type="password", name="password", placeholder="비밀번호", required=true)
-            input.whole_input(type="password", name="password2", placeholder="비밀번호 확인", required=true)
-            input.whole_submitBtn(type="submit", value="Join Now")
+block content
+    .form-container
+        .page_title 
+            span Join MyTube
+        .white_container
+            form.whole_form(action=routes.join, method="post")
+                span 이름
+                input.whole_input.shortInput(type="text" name="name", required=true)
+                span 이메일
+                input.whole_input.shortInput(type="email", name="email", required=true)
+                span 비밀번호
+                input.whole_input.shortInput(type="password", name="password", required=true)
+                span 비밀번호 확인
+                input.whole_input.shortInput(type="password", name="password2", required=true)
+                input.whole_submitBtn(type="submit", value="가입하기")
+        .OR_BOX
+            hr.OR_LINE
+            span.OR_TEXT OR
+            hr.OR_LINE
         include partials/socialLogin

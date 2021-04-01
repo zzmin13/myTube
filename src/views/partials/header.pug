@@ -23,7 +23,7 @@ header.header
                     i.fas.fa-bars.hamburgerBtn
             else
                 .user-profile#jsHeaderProfile
-                    if loggedUser.avatarUrl === undefined
+                    if !loggedUser.avatarUrl
                         img.u-avatar-default(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                     else
                         img.u-avatar-default(src=loggedUser.avatarUrl)

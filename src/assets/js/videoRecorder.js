@@ -23,7 +23,7 @@ const stopRecording = () => {
     videoRecorder.stop();
     recordBtn.removeEventListener("click", stopRecording);
     recordBtn.addEventListener("click", getVideo);
-    recordBtn.innerHTML = "Start Recording";
+    recordBtn.innerHTML = "비디오 녹화하기";
     recordBtn.style.backgroundColor = "#3498db";
 }
 const getVideo = async() => {
@@ -35,8 +35,8 @@ const getVideo = async() => {
         videoPreview.srcObject = stream;
         videoPreview.muted = true;
         videoPreview.play();
-        recordBtn.innerHTML = "Stop recording";
-        recordBtn.style.backgroundColor = "red";
+        recordBtn.innerHTML = "STOP";
+        recordBtn.style.backgroundColor = "#e53935";
         streamObject = stream;
         startRecording();
     }catch(error){

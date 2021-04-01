@@ -32,7 +32,7 @@ block content
                     span|개의 덧글
                 .video__comment-form
                     if loggedUser
-                        if loggedUser.avatarUrl === undefined
+                        if !loggedUser.avatarUrl
                             img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                         else
                             img.u-avatar-comment(src=loggedUser.avatarUrl)
@@ -44,7 +44,7 @@ block content
                 ul.video__comments-list#jsCommentList
                     each comment in comments.reverse()    
                         li(id=comment.id)
-                            if comment.creator.avatarUrl === undefined
+                            if !comment.creator.avatarUrl
                                 a(href=routes.userDetail(comment.creator._id))
                                     img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
                             else
