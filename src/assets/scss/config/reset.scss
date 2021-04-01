@@ -140,6 +140,7 @@ input {
 }
 
 input {
+  -webkit-appearance: none;
   border: none;
   box-sizing: border-box;
   &:focus,
