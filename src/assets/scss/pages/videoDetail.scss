@@ -63,30 +63,30 @@
 
 .video__description {
   font-size: 14px;
-
+  line-height: 25px;
+  padding-bottom: 50px;
   padding-left: 60px;
-  padding-bottom: 20px;
   border-bottom: 1px solid #e0e0e0;
+}
 
-  p.video__description__text {
-    width: 70%;
-    height: 75px;
-    line-height: 25px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-  p.video__description__text.clicked {
-    height: 100%;
-    display: block;
-    overflow: visible;
-  }
-  .description_moreDetails {
-    margin-top: 10px;
-    cursor: pointer;
-  }
+.video__description__text.abstracted {
+  height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.video__description__text.clicked {
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.description_moreDetails {
+  display: none;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .video__author {

@@ -1,7 +1,6 @@
 const videoCreateDate = document.querySelector(".video__createDate");
 const moreDetailBtn = document.querySelector(".description_moreDetails");
 const videoDescription = document.querySelector(".video__description__text");
-
 const getDateString = () => {
     const year = videoCreateDate.id.split("-")[0];
     const month = videoCreateDate.id.split("-")[1];
@@ -30,4 +29,11 @@ if(videoCreateDate){
 
 if(moreDetailBtn){
     moreDetailBtn.addEventListener("click", handleMoreDetail);
+}
+
+if(videoDescription){
+    if(videoDescription.offsetHeight > 74){
+        videoDescription.classList.add('abstracted');
+        moreDetailBtn.style.display = 'flex';
+    }
 }

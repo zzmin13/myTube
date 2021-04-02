@@ -25,7 +25,7 @@ block content
                         img.u-avatar-video(src=video.creator.avatarUrl)
                 a(href=routes.userDetail(video.creator.id)).creator__name=video.creator.name
             .video__description
-                p.video__description__text=video.description
+                pre.video__description__text=video.description
                 .description_moreDetails 더보기
             .video__comments
                 span.video__comment-number#jsCommentNumber=video.comments.length
