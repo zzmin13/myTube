@@ -139,7 +139,7 @@ input {
   box-sizing: border-box;
 }
 
-input {
+input:not([type="range"]) {
   -webkit-appearance: none;
   border: none;
   box-sizing: border-box;

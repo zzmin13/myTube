@@ -8,83 +8,59 @@
   video {
     max-width: 100%;
   }
-  .videoPlayer__controls {
-    opacity: 0;
-    transition: opacity 0.4s linear;
-    color: white;
-    font-size: 16px;
-    position: absolute;
-    z-index: 9;
-    bottom: 0px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 0.25fr 1.5fr 4fr;
-
-    i {
-      font-size: 25px;
-      cursor: pointer;
+}
+.videoPlayer__controls {
+  opacity: 1;
+  transition: opacity 0.4s linear;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  z-index: 9;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  .videoPlayer__column {
+    &:first-child {
+      margin-left: 10px;
+      margin-right: 20px;
     }
-    .videoPlayer__column:last-child {
-      // 스크린버튼
-      justify-self: end;
-    }
-    .videoPlayer__column:first-child {
-      // 재생버튼
-      margin-left: 15px;
-    }
-    .videoPlayer__column:nth-child(2) {
-      // 볼륨,시간
-      margin-left: 20px;
-      display: flex;
-      align-items: center;
+    &:nth-child(2) {
       width: 100%;
-      .videoTime {
-        width: 250px;
-      }
-      .videoPlayer__volumeControl {
-        display: flex;
-        &:hover #jsVolume {
-          display: flex;
-        }
-        #jsVolumeButton {
-          i {
-            width: 30px;
-          }
-          margin-right: 5px;
-        }
-      }
-
-      #currentTime {
-        margin-left: 15px;
-        margin-right: 5px;
-      }
+      display: flex;
       .videoPlayer__volume {
         display: none;
-        padding: 0;
-        opacity: 1;
-        z-index: 10;
-        width: 80px;
-
-        input {
-          background-color: rgba(0, 0, 0, 0.7);
-
-          &::-webkit-slider-runnable-track {
-            background-color: $grey;
-            height: 5px;
-          }
-          &::-webkit-slider-thumb {
-            all: unset;
-            background-color: $red;
-            height: 15px;
-            width: 15px;
-            border-radius: 50%;
-            position: relative;
-            top: -5px;
-          }
-        }
       }
     }
+    &:last-child {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .videoPlayer__volumeControl {
+      display: flex;
+      align-items: center;
+      &:hover {
+        .videoPlayer__volume {
+          display: flex;
+        }
+      }
+      span {
+        margin-right: 10px;
+      }
+      .videoPlayer__volume {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .videoPlayer__volume {
+    width: 60px;
   }
 }
