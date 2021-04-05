@@ -20,7 +20,7 @@ block content
             .video__author
                 a(href=routes.userDetail(video.creator.id))
                     if video.creator.avatarUrl === undefined
-                        img.u-avatar-video(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                        img.u-avatar-video(src="https://i.imgur.com/Zf9ELgw.jpg")
                     else
                         img.u-avatar-video(src=video.creator.avatarUrl)
                 a(href=routes.userDetail(video.creator.id)).creator__name=video.creator.name
@@ -33,7 +33,7 @@ block content
                 .video__comment-form
                     if loggedUser
                         if !loggedUser.avatarUrl
-                            img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                            img.u-avatar-comment(src="https://i.imgur.com/Zf9ELgw.jpg")
                         else
                             img.u-avatar-comment(src=loggedUser.avatarUrl)
                         form.add__comment#jsAddComment
@@ -46,7 +46,7 @@ block content
                         li(id=comment.id)
                             if !comment.creator.avatarUrl
                                 a(href=routes.userDetail(comment.creator._id))
-                                    img.u-avatar-comment(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                                    img.u-avatar-comment(src="https://i.imgur.com/Zf9ELgw.jpg")
                             else
                                 a(href=routes.userDetail(comment.creator._id))
                                     img.u-avatar-comment(src=comment.creator.avatarUrl)

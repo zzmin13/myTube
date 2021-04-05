@@ -4,7 +4,7 @@ mixin videoBlock(video = {})
             video.videoBlock__thumbnail(src=video.videoFile, autoplay=false)
             .videoBlock__info
                 if !video.creatorAvatar
-                    img.videoBlock__creatorAvatar(src="https://mytube1213.s3.ap-northeast-2.amazonaws.com/avatar/275dacc68a75eb7a1b0b7f1b1b63ef56")
+                    img.videoBlock__creatorAvatar(src="https://i.imgur.com/Zf9ELgw.jpg")
                 else
                     img.videoBlock__creatorAvatar(src=video.creatorAvatar)
                 .videoBlock__text
