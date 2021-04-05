@@ -11,7 +11,7 @@ import routes from "../routes";
 
 const userRouter = express.Router();
 
-userRouter.use("/src", express.static("src"));
+userRouter.use("/uploads", express.static("uploads"));
 
 userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
 userRouter.post(routes.editProfile, onlyPrivate, uploadAvatar, postEditProfile);
