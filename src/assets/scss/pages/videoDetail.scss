@@ -200,13 +200,20 @@
     width: 90%;
     margin-left: 15px;
     text-align: start;
-    span:first-child {
-      font-weight: 600;
+    .video__comments-name-time {
+      span:first-child {
+        font-weight: 600;
+      }
+      .video__comment_time {
+        margin-left: 5px;
+        color: gray;
+      }
     }
     span:last-child {
       margin-top: 10px;
     }
   }
+
   .video__comments-ellipsis {
     width: auto;
     background-color: transparent;

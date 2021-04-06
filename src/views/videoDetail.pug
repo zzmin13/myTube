@@ -53,7 +53,9 @@ block content
                                 a(href=routes.userDetail(comment.creator._id))
                                     img.u-avatar-comment(src=comment.creator.avatarUrl)
                             .video__comments-text
-                                span=comment.creator.name
+                                .video__comments-name-time
+                                    span=comment.creator.name
+                                    span.video__comment_time(id=comment.createdAt)  
                                 span=comment.text
                             if loggedUser && comment.creator._id == loggedUser.id
                                 i.fas.fa-ellipsis-v.video__comments-ellipsis#jsCommentEllipsisBtn
