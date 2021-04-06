@@ -131,12 +131,43 @@
   .add__comment {
     width: 100%;
     margin-left: 10px;
+    display: flex;
+    flex-direction: row;
     input {
       width: 100%;
       font-size: 100%;
       background-color: transparent;
       padding-bottom: 10px;
       border-bottom: 1px solid #e0e0e0;
+      margin-right: 10px;
+    }
+    button {
+      width: 50px;
+      box-shadow: inset 0px 1px 0px 0px #ffffff;
+      background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      background-color: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #dcdcdc;
+      cursor: pointer;
+      color: #666666;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #ffffff;
+
+      &:hover {
+        background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        background-color: #f6f6f6;
+      }
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+
+      &::placeholder {
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.7);
+      }
     }
   }
 }
@@ -198,12 +229,11 @@
     top: 0;
     right: -120px;
     width: 100px;
-    height: 80px;
+    height: 40px;
   }
-  .comments__editBtn,
   .comments__delteBtn {
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     width: 100%;
     &:hover {
       background-color: #eeeeee;

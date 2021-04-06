@@ -38,6 +38,8 @@ block content
                             img.u-avatar-comment(src=loggedUser.avatarUrl)
                         form.add__comment#jsAddComment
                             input(type="text", placeholder="덧글을 입력하세요", name="comment")
+                            button(type="submit", value="작성", title="작성") 작성
+
                     else
                         form.add__comment#jsCommentLogout
                             input(id=routes.login, type="text", placeholder="덧글을 작성하려면 로그인해주세요.")
@@ -56,9 +58,6 @@ block content
                             if loggedUser && comment.creator._id == loggedUser.id
                                 i.fas.fa-ellipsis-v.video__comments-ellipsis#jsCommentEllipsisBtn
                             .comments__ellipsisbox#jsCommentEllipsisBox
-                                .comments__editBtn#jsCommentEditBtn
-                                    i.fas.fa-pen
-                                    span 수정
                                 .comments__delteBtn#jsCommentDelBtn
                                     i.fas.fa-trash
                                     span 삭제
