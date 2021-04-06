@@ -1,7 +1,7 @@
 mixin videoBlock(video = {})
     .videoBlock
         a(href=routes.videoDetail(video.id))
-            video.videoBlock__thumbnail(src=`${video.videoFile}#t=0.5`, autoplay=false, preload="metadata")
+            video.videoBlock__thumbnail(src=`${video.videoFile}#t=0.5`, muted)
             .videoBlock__info
                 if !video.creatorAvatar
                     img.videoBlock__creatorAvatar(src="https://i.imgur.com/Zf9ELgw.jpg")

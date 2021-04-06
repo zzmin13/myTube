@@ -6,3 +6,4 @@ import "./addComment";
 import "./videoDetail";
 import "./deleteVideo";
 import "./uploadVideo";
+import "./videoBlock";
