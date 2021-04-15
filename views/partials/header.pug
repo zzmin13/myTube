@@ -1,0 +1,31 @@
+header.header
+    .header__wrapper
+        .header__column
+            a(href=routes.home,title="홈")
+                i.fab.fa-youtube.youtubeBtn
+                span #{siteName}
+        .header__column
+            form(action=routes.search, method="get")
+                input#jsSearchBar(type="text", placeholder="검색", name="term")
+                button(type="submit", value="Search", title="검색")
+                    i.fas.fa-search
+        .header__column
+            .user-profile-detail#jsHeaderProfileDetail
+                if !loggedUser
+                    a(href=routes.join, title="동영상 업로드") Join
+                    a(href=routes.login, title="프로필") Log In
+                else 
+                    a(href=`/videos${routes.upload}`, title="동영상 업로드") Upload
+                    a(href=routes.me, title="프로필") My page
+                    a(href=routes.logout, title="로그아웃") Log Out
+            if !loggedUser
+                .user-profile#jsHeaderProfile
+                    i.fas.fa-bars.hamburgerBtn
+            else
+                .user-profile#jsHeaderProfile
+                    if !loggedUser.avatarUrl
+                        img.u-avatar-default(src="https://i.imgur.com/Zf9ELgw.jpg")
+                    else
+                        img.u-avatar-default(src=loggedUser.avatarUrl)
+            
+

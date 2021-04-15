@@ -1,0 +1,29 @@
+extends layouts/main
+include mixins/videoBlock
+
+block content 
+    .user-profile
+        .user-profile__header
+            if !user.avatarUrl
+                img.u-avatar-default(src="https://i.imgur.com/Zf9ELgw.jpg")
+            else
+                img.u-avatar(src=user.avatarUrl)
+            h4.profile__username=user.name
+            h4.profile__useremail=user.email
+        if loggedUser
+            if user.id === loggedUser.id
+                .user-profile__btns
+                    a(href=`/users${routes.editProfile}`)
+                        button ✏️ 프로필 편집
+                    a(href=`/users${routes.changePassword}`)
+                        button 🔒 비밀번호 변경
+        .uploaded-videos 
+            each video in user.videos 
+                +videoBlock({
+                    id: video.id,
+                    title: video.title,
+                    views: video.views,
+                    videoFile: video.fileUrl,
+                    creatorName: user.name,
+                    creatorAvatar: user.avatarUrl
+                })

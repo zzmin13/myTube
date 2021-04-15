@@ -1,0 +1,18 @@
+extends layouts/main
+
+block content 
+    .form-container
+        .page_title 
+            span Log in to MyTube
+        .white_container
+            form.whole_form(action=routes.login, method="post")
+                span email
+                input.whole_input.shortInput(type="email", name="email", required=true)
+                span password
+                input.whole_input.shortInput(type="password", name="password", required=true)
+                input.whole_submitBtn(type="submit", value="Log In")
+        .OR_BOX
+            hr.OR_LINE
+            span.OR_TEXT OR
+            hr.OR_LINE        
+        include partials/socialLogin

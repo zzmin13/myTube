@@ -1,0 +1,18 @@
+extends layouts/main
+include mixins/videoBlock
+block content 
+    .search__header
+        span.searchingBy #{searchingBy}
+        span  에 대한 검색 결과
+        if videos.length === 0
+            .search__NoVideos 비디오가 없습니다.
+    .search__videos
+        each video in videos
+            +videoBlock({
+                title: video.title,
+                views: video.views,
+                videoFile: video.fileUrl,
+                id: video.id,
+                creatorName: video.creator.name,
+                creatorAvatar: video.creator.avatarUrl
+             })
